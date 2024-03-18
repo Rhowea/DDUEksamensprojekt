@@ -1,9 +1,9 @@
 extends Control
 
-onready var window = $WindowDialog
-onready var set1 = $WindowDialog/Set1
-onready var set2 = $WindowDialog/Set2
-onready var set3 = $WindowDialog/Set3
+onready var window = $Panel
+onready var set1 = $Panel/Set1
+onready var set2 = $Panel/Set2
+onready var set3 = $Panel/Set3
 
 var set1Interacted = false
 var set2Interacted = false
@@ -11,7 +11,7 @@ var set3Interacted = false
 
 func _on_Button1_pressed():
 	if window.visible == false:
-		window.popup()
+		window.visible = true
 		print(window.visible)
 	set1.visible = true
 	set2.visible = false
@@ -19,7 +19,7 @@ func _on_Button1_pressed():
 
 func _on_Button2_pressed():
 	if window.visible == false:
-		window.popup()
+		window.visible = true
 		print(window.visible)
 	set1.visible = false
 	set2.visible = true
@@ -27,7 +27,7 @@ func _on_Button2_pressed():
 
 func _on_Button3_pressed():
 	if window.visible == false:
-		window.popup()
+		window.visible = true
 		print(window.visible)
 	set1.visible = false
 	set2.visible = false
@@ -54,6 +54,7 @@ func _on_Set3_has_interacted():
 func checkForReady():
 	if set1Interacted == true and set2Interacted == true and set3Interacted == true:
 		print("Ready to calculate")
+		$Button4.visible = true
 
 
 
