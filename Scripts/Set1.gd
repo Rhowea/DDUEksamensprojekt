@@ -1,6 +1,9 @@
 extends Control
 
 onready var slots = $VBoxContainer/HBoxContainer
+onready var slot1 = $VBoxContainer/HBoxContainer/Slot1
+onready var slot2 = $VBoxContainer/HBoxContainer/Slot2
+onready var slot3 = $VBoxContainer/HBoxContainer/Slot3
 onready var set1 = $VBoxContainer/Ingredients1
 onready var set2 = $VBoxContainer/Ingredients2
 onready var set3 = $VBoxContainer/Ingredients3

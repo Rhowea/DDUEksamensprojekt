@@ -11,6 +11,6 @@ func can_drop_data(position, data):
 
 func drop_data(position, data):
 	contents = data
-	print(data)
+	print(contents)
 	print("Something was dropped")
 	emit_signal("contents_updated")
