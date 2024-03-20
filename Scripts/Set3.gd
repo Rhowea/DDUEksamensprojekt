@@ -1,5 +1,7 @@
 extends Control
 
+onready var slider = $HSlider
+
 signal has_interacted
 var hasBeenInteractedWith = false
 
