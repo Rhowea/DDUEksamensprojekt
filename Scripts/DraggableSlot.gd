@@ -3,7 +3,7 @@ extends TextureButton
 export var slotNumber:int
 signal contents_updated
 
-var possibleIngredients = {0: ["Carrot", "Potato", "Tomato"], 1: ["Soy Beans", "Fish", "Beef", "Chicken"], 2: ["Water", "Soda", "Energy Drink"]}
+var possibleIngredients = {0: ["Carrot", "Potato", "Tomato"], 1: ["Chickpeas", "Fish", "Beef", "Chicken"], 2: ["Water", "Soda", "Energy Drink"]}
 var contents = null
 
 func can_drop_data(position, data):
