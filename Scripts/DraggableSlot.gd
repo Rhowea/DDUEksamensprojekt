@@ -7,10 +7,11 @@ var possibleIngredients = {0: ["Carrot", "Potato", "Tomato"], 1: ["Chickpeas", "
 var contents = null
 
 func can_drop_data(position, data):
-	return typeof(data) == TYPE_STRING and possibleIngredients[slotNumber].has(data)
+	return typeof(data) == TYPE_ARRAY and possibleIngredients[slotNumber].has(data[0])
 
 func drop_data(position, data):
-	contents = data
+	contents = data[0]
+	self.texture_normal = data[1]
 	print(contents)
 	print("Something was dropped")
 	emit_signal("contents_updated")
