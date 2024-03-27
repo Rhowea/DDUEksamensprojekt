@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -25,6 +25,7 @@
 [ext_resource path="res://Icons/Potato.png" type="Texture" id=23]
 [ext_resource path="res://Icons/Water.png" type="Texture" id=24]
 [ext_resource path="res://Icons/Rounded Slot.png" type="Texture" id=25]
+[ext_resource path="res://Icons/Health and Eco.png" type="Texture" id=26]
 
 [sub_resource type="Theme" id=2]
 
@@ -75,6 +76,7 @@ margin_bottom = 314.0
 texture_normal = ExtResource( 2 )
 
 [node name="Ingredients" type="Control" parent="Camera/Control/Panel"]
+visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 541.0
@@ -354,7 +356,7 @@ expand = true
 visible = false
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 536.0
+margin_right = 541.0
 margin_bottom = 314.0
 script = ExtResource( 10 )
 
@@ -526,15 +528,18 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Camera/Control/Panel/Grades/HBoxContainer"]
-margin_left = 134.0
-margin_right = 198.0
-margin_bottom = 64.0
-texture = ExtResource( 2 )
+margin_left = 116.0
+margin_right = 216.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 26 )
+expand = true
 
 [node name="Equals" type="Label" parent="Camera/Control/Panel/Grades/HBoxContainer"]
-margin_left = 218.0
-margin_right = 282.0
-margin_bottom = 64.0
+margin_left = 236.0
+margin_top = 18.0
+margin_right = 300.0
+margin_bottom = 82.0
 rect_min_size = Vector2( 64, 64 )
 text = "="
 align = 1
@@ -542,9 +547,10 @@ valign = 1
 uppercase = true
 
 [node name="Grade" type="Label" parent="Camera/Control/Panel/Grades/HBoxContainer"]
-margin_left = 302.0
-margin_right = 366.0
-margin_bottom = 64.0
+margin_left = 320.0
+margin_top = 18.0
+margin_right = 384.0
+margin_bottom = 82.0
 rect_min_size = Vector2( 64, 64 )
 text = "f"
 align = 1
