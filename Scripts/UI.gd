@@ -8,6 +8,7 @@ onready var set4 = $Panel/Graph
 onready var set5 = $Panel/Grades
 onready var set6 = $Panel/ScoreSubmit
 onready var set7 = $Panel/HighscoreBoard
+onready var restartIcon = "res://Icons/Restart.png"
 
 var rng = RandomNumberGenerator.new()
 var set1Interacted = false
@@ -18,6 +19,7 @@ var meatVegRatio
 var price
 var income := {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 var score = -1
+var grade = "G"
 #Ingredients[Attractablity, Environmental Goodness]
 var ingredients := {
 	"Carrot": [0.4, 0.7],
@@ -40,7 +42,6 @@ const SECRET_KEY = 1234567890
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
-signal response(body)
 
 func _ready():
 	randomize()
@@ -99,11 +100,13 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	if response["response"]["size"] == 0:
 		setServerResponseBody("An array of size 0 was received")
+		_on_Button4_pressed()
 #		emit_signal("response", "An array of size 0 was recieved")
 	if response['response']['size'] > 0:
 		var totalResponse:String = ""
 		for n in (response['response']['size']):
-			totalResponse = totalResponse + String(response['response'][String(n)]['player_name']) + "\t\t" + String(response['response'][String(n)]['score']) + "\n"
+			totalResponse = totalResponse + String(response['response'][String(n)]['player_name']) + "\t\t" + String(response['response'][String(n)]['score']) + "\t\t" + String(response["response"][String(n)]["grade"]) + "\n"
+			emit_signal("completedScoreFetching")
 			setServerResponseBody(totalResponse)
 #			emit_signal("response", totalResponse)
 
@@ -180,8 +183,9 @@ func _on_Button4_pressed():
 	elif set6.visible == true:
 		getScores()
 		showScreen(set7)
+		$Button4.icon = load(restartIcon)
 	elif set7.visible == true:
-		pass
+		get_tree().reload_current_scene()
 	else:
 		for n in income:
 			#How many buy
@@ -212,7 +216,6 @@ func calcAmountOfCustomers():
 		variability = -25 * rng.randf()
 	else:
 		variability = 25 * rng.randf()
-	
 	return max(calcAttract() * 75 + variability, 0)
 
 func calcEcoImpact():
@@ -232,6 +235,8 @@ func calcEcoImpact():
 	else:
 		set5.grade.text = "F"
 	print("totalImpactScore = ", totalImpactScore)
+	grade = set5.grade.text
+	set6.grade = grade
 
 func calcTotalScore():
 	var total = 0
@@ -252,12 +257,9 @@ func setServerResponseBody(body):
 	print("serverResponseBody: ", serverResponseBody)
 	set7.board.text = serverResponseBody
 
-func proceedToSet7():
-	getScores()
-	showScreen(set7)
-
 func getScores():
 	var command = "get_scores"
 	var data = {"score_ofset" : 0, "score_number" : 10}
-	request_queue.push_back({"command" : command, "data" : data})
-	print("get scores")
+	var request := {"command" : command, "data" : data}
+	addToRequestQueue(request)
+	print("getting scores")
