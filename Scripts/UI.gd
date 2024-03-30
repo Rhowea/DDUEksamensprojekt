@@ -6,6 +6,8 @@ onready var set2 = $Panel/VegMeatRatio
 onready var set3 = $Panel/Price
 onready var set4 = $Panel/Graph
 onready var set5 = $Panel/Grades
+onready var set6 = $Panel/ScoreSubmit
+onready var set7 = $Panel/HighscoreBoard
 
 var rng = RandomNumberGenerator.new()
 var set1Interacted = false
@@ -15,6 +17,7 @@ var canSetVars = true
 var meatVegRatio
 var price
 var income := {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+var score = -1
 #Ingredients[Attractablity, Environmental Goodness]
 var ingredients := {
 	"Carrot": [0.4, 0.7],
@@ -28,33 +31,116 @@ var ingredients := {
 	"Soda": [1, 0.4],
 	"Energy Drink": [0.8, 0.2]
 }
+var serverResponseBody
+
+var http_request : HTTPRequest = HTTPRequest.new()
+const SERVER_URL = "http://kroog.dk/db_test.php"
+const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
+const SECRET_KEY = 1234567890
+var nonce = null
+var request_queue : Array = []
+var is_requesting : bool = false
+signal response(body)
+
+func _ready():
+	randomize()
+	add_child(http_request)
+	http_request.connect("request_completed",self,"_http_request_completed")
+
+func _process(delta):
+	if is_requesting:
+		return
+	if request_queue.empty():
+		return
+	is_requesting = true
+	if nonce == null:
+		request_nonce()
+	else:
+		_send_request(request_queue.pop_front())
+
+func _send_request(request: Dictionary):
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({"data" : JSON.print(request['data'])})
+	var body = "command=" + request['command'] + "&" + data
+	var cnonce = String(Crypto.new().generate_random_bytes(32)).sha256_text()
+	var client_hash = (nonce + cnonce + body + String(SECRET_KEY)).sha256_text()
+	print("Client hash: " + client_hash)
+	
+	nonce = null
+	
+	var headers = SERVER_HEADERS.duplicate()
+	headers.push_back("cnonce: " + cnonce)
+	headers.push_back("hash: " + client_hash)
+	
+	var err = http_request.request(SERVER_URL, headers, false, HTTPClient.METHOD_POST, body)
+		
+	if err != OK:
+		printerr("HTTPRequest error: " + String(err))
+		return	
+	print("Requesting...\n\tCommand: " + request['command'] + "\n\tBody: " + body)
+
+func _http_request_completed(_result, _response_code, _headers, _body):
+	is_requesting = false
+	if _result != http_request.RESULT_SUCCESS:
+		printerr("Error w/ connection: " + String(_result))
+		return
+	
+	var response_body = _body.get_string_from_utf8()
+	var response = parse_json(response_body)
+
+	if response['error'] != "none":
+		printerr("We returned error: " + response['error'])
+		return
+	
+	if response['command'] == "get_nonce":
+		nonce = response['response']['nonce']
+		print("Get nonce: " + response['response']['nonce'])
+		return	
+	
+	if response["response"]["size"] == 0:
+		setServerResponseBody("An array of size 0 was received")
+#		emit_signal("response", "An array of size 0 was recieved")
+	if response['response']['size'] > 0:
+		var totalResponse:String = ""
+		for n in (response['response']['size']):
+			totalResponse = totalResponse + String(response['response'][String(n)]['player_name']) + "\t\t" + String(response['response'][String(n)]['score']) + "\n"
+			setServerResponseBody(totalResponse)
+#			emit_signal("response", totalResponse)
+
+func request_nonce():
+	var client = HTTPClient.new()
+	var data = client.query_string_from_dict({"data" : JSON.print({})})
+	var body = "command=get_nonce&" + data
+	var err = http_request.request(SERVER_URL, SERVER_HEADERS, false, HTTPClient.METHOD_POST, body)
+	
+	if err != OK:
+		printerr("HTTPRequest error: " + String(err))
+		return
+	print("Requeste nonce")
+
+func addToRequestQueue(body):
+	request_queue.push_back(body)
 
 func _on_Button1_pressed():
 	if canSetVars == true:
 		if window.visible == false:
 			window.visible = true
 			print(window.visible)
-		set1.visible = true
-		set2.visible = false
-		set3.visible = false
+		showScreen(set1)
 
 func _on_Button2_pressed():
 	if canSetVars == true:
 		if window.visible == false:
 			window.visible = true
 			print(window.visible)
-		set1.visible = false
-		set2.visible = true
-		set3.visible = false
+		showScreen(set2)
 
 func _on_Button3_pressed():
 	if canSetVars == true:
 		if window.visible == false:
 			window.visible = true
 			print(window.visible)
-		set1.visible = false
-		set2.visible = false
-		set3.visible = true
+		showScreen(set3)
 
 func _on_WindowDialog_popup_hide():
 		print(window.visible)
@@ -84,15 +170,18 @@ func checkForReady():
 func _on_Button4_pressed():
 	canSetVars = false
 	if set4.visible == true:
-		set1.visible = false
-		set2.visible = false
-		set3.visible = false
-		set4.visible = false
 		calcEcoImpact()
-		set5.visible = true
+		showScreen(set5)
 	elif set5.visible == true:
+		set6.setScoreLabel(String(calcTotalScore()))
+		showScreen(set6)
 		#Score submission
 		print("Score submission goes here")
+	elif set6.visible == true:
+		getScores()
+		showScreen(set7)
+	elif set7.visible == true:
+		pass
 	else:
 		for n in income:
 			#How many buy
@@ -102,11 +191,8 @@ func _on_Button4_pressed():
 			#Amount of customers times how many buy
 			income[n] = customerAmount * buyerRatio * (price * 100)
 		print(income)
-		set1.visible = false
-		set2.visible = false
-		set3.visible = false
 		set4.setBarHeight(income)
-		set4.visible = true
+		showScreen(set4)
 
 func calcAttract():
 	var ratioAttract = -4 * pow(set2.slider.value, 4) + 4 * pow(set2.slider.value, 2)
@@ -146,3 +232,32 @@ func calcEcoImpact():
 	else:
 		set5.grade.text = "F"
 	print("totalImpactScore = ", totalImpactScore)
+
+func calcTotalScore():
+	var total = 0
+	for i in income:
+		total = total + income[i]
+	return int(total)
+
+func showScreen(set:Control):
+	var sets = [set1, set2, set3, set4, set5, set6, set7]
+	for i in sets:
+		if i == set:
+			i.visible = true
+		else:
+			i.visible = false
+
+func setServerResponseBody(body):
+	serverResponseBody = body
+	print("serverResponseBody: ", serverResponseBody)
+	set7.board.text = serverResponseBody
+
+func proceedToSet7():
+	getScores()
+	showScreen(set7)
+
+func getScores():
+	var command = "get_scores"
+	var data = {"score_ofset" : 0, "score_number" : 10}
+	request_queue.push_back({"command" : command, "data" : data})
+	print("get scores")
