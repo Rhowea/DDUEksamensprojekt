@@ -85,6 +85,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Panel" type="PanelContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
+visible = false
 margin_right = 500.0
 margin_bottom = 367.0
 size_flags_horizontal = 3
@@ -93,6 +94,7 @@ theme = SubResource( 2 )
 script = ExtResource( 9 )
 
 [node name="Ingredients" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
+visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 493.0
@@ -1064,26 +1066,26 @@ align = 1
 autowrap = true
 
 [node name="HSeparator" type="HSeparator" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
-margin_top = 371.0
+margin_top = 185.0
 margin_right = 500.0
-margin_bottom = 396.0
+margin_bottom = 210.0
 custom_constants/separation = 25
 
 [node name="Buttons" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
-margin_top = 400.0
+margin_top = 214.0
 margin_right = 500.0
-margin_bottom = 500.0
-size_flags_horizontal = 7
+margin_bottom = 314.0
+size_flags_horizontal = 3
 alignment = 1
 
 [node name="Button1" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
-margin_left = 96.0
-margin_right = 196.0
+margin_left = 32.0
+margin_right = 132.0
 margin_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 5
+size_flags_horizontal = 6
 size_flags_vertical = 0
 action_mode = 0
 icon = ExtResource( 14 )
@@ -1095,18 +1097,18 @@ margin_left = 200.0
 margin_right = 300.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 5
+size_flags_horizontal = 6
 size_flags_vertical = 0
 action_mode = 0
 icon = ExtResource( 12 )
 expand_icon = true
 
 [node name="Button3" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
-margin_left = 304.0
-margin_right = 404.0
+margin_left = 368.0
+margin_right = 468.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 5
+size_flags_horizontal = 6
 size_flags_vertical = 0
 action_mode = 0
 icon = ExtResource( 13 )

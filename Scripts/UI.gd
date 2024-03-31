@@ -1,13 +1,14 @@
 extends Control
 
-onready var window = $VBoxContainer/Panel
-onready var set1 = $VBoxContainer/Panel/Ingredients
-onready var set2 = $VBoxContainer/Panel/VegMeatRatio
-onready var set3 = $VBoxContainer/Panel/Price
-onready var set4 = $VBoxContainer/Panel/Graph
-onready var set5 = $VBoxContainer/Panel/Grades
-onready var set6 = $VBoxContainer/Panel/ScoreSubmit
-onready var set7 = $VBoxContainer/Panel/HighscoreBoard
+onready var window = $AspectRatioContainer/VBoxContainer/Panel
+onready var set1 = $AspectRatioContainer/VBoxContainer/Panel/Ingredients
+onready var set2 = $AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio
+onready var set3 = $AspectRatioContainer/VBoxContainer/Panel/Price
+onready var set4 = $AspectRatioContainer/VBoxContainer/Panel/Graph
+onready var set5 = $AspectRatioContainer/VBoxContainer/Panel/Grades
+onready var set6 = $AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit
+onready var set7 = $AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard
+onready var button4 = $"../Button4"
 onready var restartIcon = "res://Icons/Restart.png"
 
 var rng = RandomNumberGenerator.new()
@@ -168,7 +169,7 @@ func _on_Set3_has_interacted():
 func checkForReady():
 	if set1Interacted == true and set2Interacted == true and set3Interacted == true:
 		print("Ready to calculate")
-		$Button4.visible = true
+		button4.visible = true
 
 func _on_Button4_pressed():
 	canSetVars = false
@@ -183,7 +184,7 @@ func _on_Button4_pressed():
 	elif set6.visible == true:
 		getScores()
 		showScreen(set7)
-		$Button4.icon = load(restartIcon)
+		button4.icon = load(restartIcon)
 	elif set7.visible == true:
 		get_tree().reload_current_scene()
 	else:
