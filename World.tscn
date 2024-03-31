@@ -1,7 +1,6 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Set1.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/DraggableSource.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/DraggableSlot.gd" type="Script" id=5]
@@ -29,12 +28,11 @@
 [ext_resource path="res://Scripts/ScoreSubmit.gd" type="Script" id=27]
 [ext_resource path="res://Scripts/HighscoreBoard.gd" type="Script" id=28]
 [ext_resource path="res://Icons/Play.png" type="Texture" id=29]
+[ext_resource path="res://Icons/Plantbeef.png" type="Texture" id=30]
 
 [sub_resource type="Theme" id=2]
 
 [sub_resource type="Theme" id=3]
-
-[sub_resource type="Theme" id=4]
 
 [sub_resource type="PlaneMesh" id=1]
 size = Vector2( 200, 200 )
@@ -46,154 +44,193 @@ transform = Transform( 0.707107, -0.408244, 0.577353, 0, 0.816501, 0.577345, -0.
 current = true
 fov = 80.0
 
-[node name="Control" type="Control" parent="Camera"]
+[node name="Button4" type="Button" parent="Camera"]
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 512.0
-margin_top = 300.0
-margin_right = -512.0
-margin_bottom = -300.0
+margin_left = -150.0
+margin_top = -150.0
+margin_right = -50.0
+margin_bottom = -50.0
+rect_min_size = Vector2( 100, 100 )
+action_mode = 0
+icon = ExtResource( 29 )
+expand_icon = true
+
+[node name="MainUI" type="Control" parent="Camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
-[node name="Panel" type="PanelContainer" parent="Camera/Control"]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -274.0
-margin_top = -198.0
-margin_right = 274.0
-margin_bottom = 123.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Camera/MainUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 50.0
+margin_bottom = -50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer"]
+margin_left = 262.0
+margin_right = 762.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 367.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource( 2 )
 script = ExtResource( 9 )
 
-[node name="TextureButton" type="TextureButton" parent="Camera/Control/Panel"]
-visible = false
+[node name="Ingredients" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 541.0
-margin_bottom = 314.0
-texture_normal = ExtResource( 2 )
-
-[node name="Ingredients" type="Control" parent="Camera/Control/Panel"]
-visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 541.0
-margin_bottom = 314.0
+margin_right = 493.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 3 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera/Control/Panel/Ingredients"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -235.0
-margin_top = -105.0
-margin_right = 235.0
-margin_bottom = 105.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
+margin_right = 486.0
+margin_bottom = 174.0
+size_flags_vertical = 3
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Camera/Control/Panel/Ingredients/VBoxContainer"]
-margin_top = 73.0
-margin_right = 470.0
-margin_bottom = 137.0
-alignment = 1
-
-[node name="Slot1" type="TextureButton" parent="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer"]
-margin_left = 135.0
-margin_right = 199.0
-margin_bottom = 64.0
+[node name="Slot1" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
+margin_right = 159.0
+margin_bottom = 174.0
+grow_horizontal = 0
+grow_vertical = 0
 rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 7
+size_flags_vertical = 7
 action_mode = 0
 texture_normal = ExtResource( 25 )
 expand = true
+stretch_mode = 5
 script = ExtResource( 5 )
 
-[node name="Slot2" type="TextureButton" parent="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer"]
-margin_left = 203.0
-margin_right = 267.0
-margin_bottom = 64.0
+[node name="Slot2" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
+margin_left = 163.0
+margin_right = 322.0
+margin_bottom = 174.0
+grow_horizontal = 0
+grow_vertical = 0
 rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 7
+size_flags_vertical = 7
 action_mode = 0
 texture_normal = ExtResource( 25 )
 expand = true
+stretch_mode = 5
 script = ExtResource( 5 )
 slotNumber = 1
 
-[node name="Slot3" type="TextureButton" parent="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer"]
-margin_left = 271.0
-margin_right = 335.0
-margin_bottom = 64.0
+[node name="Slot3" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
+margin_left = 326.0
+margin_right = 486.0
+margin_bottom = 174.0
+grow_horizontal = 0
+grow_vertical = 0
 rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 7
+size_flags_vertical = 7
 action_mode = 0
 texture_normal = ExtResource( 25 )
 expand = true
+stretch_mode = 5
 script = ExtResource( 5 )
 slotNumber = 2
 
-[node name="Ingredients1" type="HBoxContainer" parent="Camera/Control/Panel/Ingredients/VBoxContainer"]
-visible = false
-margin_top = 107.0
-margin_right = 470.0
-margin_bottom = 171.0
+[node name="Ingredients1" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
+margin_top = 178.0
+margin_right = 486.0
+margin_bottom = 353.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
-[node name="Veg1" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients1"]
-margin_left = 135.0
-margin_right = 199.0
-margin_bottom = 64.0
+[node name="Veg1" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1"]
+margin_right = 159.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 64, 64 )
 hint_tooltip = "Carrot"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 15 )
 expand = true
+stretch_mode = 6
 script = ExtResource( 4 )
 ingredientName = "Carrot"
 
-[node name="Veg2" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients1"]
-margin_left = 203.0
-margin_right = 267.0
-margin_bottom = 64.0
+[node name="Veg2" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1"]
+margin_left = 163.0
+margin_right = 322.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 64, 64 )
 hint_tooltip = "Potato"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 23 )
 expand = true
+stretch_mode = 6
 script = ExtResource( 4 )
 ingredientName = "Potato"
 
-[node name="Veg3" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients1"]
-margin_left = 271.0
-margin_right = 335.0
-margin_bottom = 64.0
+[node name="Veg3" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1"]
+margin_left = 326.0
+margin_right = 486.0
+margin_bottom = 175.0
 rect_min_size = Vector2( 64, 64 )
 hint_tooltip = "Tomato"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 19 )
 expand = true
+stretch_mode = 6
 script = ExtResource( 4 )
 ingredientName = "Tomato"
 
-[node name="Ingredients2" type="HBoxContainer" parent="Camera/Control/Panel/Ingredients/VBoxContainer"]
+[node name="Ingredients2" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
 visible = false
 margin_top = 107.0
 margin_right = 470.0
 margin_bottom = 171.0
 alignment = 1
 
-[node name="Meat1" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients2"]
+[node name="Meat1" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2"]
 margin_left = 101.0
 margin_right = 165.0
 margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 hint_tooltip = "Chickpeas"
-texture = ExtResource( 2 )
+texture = ExtResource( 30 )
+expand = true
 script = ExtResource( 4 )
 ingredientName = "Chickpeas"
 
-[node name="Meat2" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients2"]
+[node name="Meat2" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2"]
 margin_left = 169.0
 margin_right = 233.0
 margin_bottom = 64.0
@@ -204,7 +241,7 @@ expand = true
 script = ExtResource( 4 )
 ingredientName = "Fish"
 
-[node name="Meat3" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients2"]
+[node name="Meat3" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2"]
 margin_left = 237.0
 margin_right = 301.0
 margin_bottom = 64.0
@@ -215,7 +252,7 @@ expand = true
 script = ExtResource( 4 )
 ingredientName = "Beef"
 
-[node name="Meat4" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients2"]
+[node name="Meat4" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2"]
 margin_left = 305.0
 margin_right = 369.0
 margin_bottom = 64.0
@@ -226,14 +263,14 @@ expand = true
 script = ExtResource( 4 )
 ingredientName = "Chicken"
 
-[node name="Ingredients3" type="HBoxContainer" parent="Camera/Control/Panel/Ingredients/VBoxContainer"]
+[node name="Ingredients3" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
 visible = false
 margin_top = 107.0
 margin_right = 470.0
 margin_bottom = 171.0
 alignment = 1
 
-[node name="Drink1" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients3"]
+[node name="Drink1" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3"]
 margin_left = 135.0
 margin_right = 199.0
 margin_bottom = 64.0
@@ -244,7 +281,7 @@ expand = true
 script = ExtResource( 4 )
 ingredientName = "Water"
 
-[node name="Drink2" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients3"]
+[node name="Drink2" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3"]
 margin_left = 203.0
 margin_right = 267.0
 margin_bottom = 64.0
@@ -255,7 +292,7 @@ expand = true
 script = ExtResource( 4 )
 ingredientName = "Soda"
 
-[node name="Drink3" type="TextureRect" parent="Camera/Control/Panel/Ingredients/VBoxContainer/Ingredients3"]
+[node name="Drink3" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3"]
 margin_left = 271.0
 margin_right = 335.0
 margin_bottom = 64.0
@@ -266,15 +303,17 @@ expand = true
 script = ExtResource( 4 )
 ingredientName = "Energy Drink"
 
-[node name="VegMeatRatio" type="Control" parent="Camera/Control/Panel"]
+[node name="VegMeatRatio" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 541.0
-margin_bottom = 314.0
+margin_right = 493.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 6 )
 
-[node name="HSlider" type="HSlider" parent="Camera/Control/Panel/VegMeatRatio"]
+[node name="HSlider" type="HSlider" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -288,7 +327,7 @@ max_value = 0.9
 step = 0.01
 value = 0.5
 
-[node name="Carrot Icon" type="TextureRect" parent="Camera/Control/Panel/VegMeatRatio"]
+[node name="Carrot Icon" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -300,7 +339,7 @@ margin_bottom = -12.5
 texture = ExtResource( 15 )
 expand = true
 
-[node name="Meat Icon" type="TextureRect" parent="Camera/Control/Panel/VegMeatRatio"]
+[node name="Meat Icon" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -312,15 +351,17 @@ margin_bottom = -12.5
 texture = ExtResource( 16 )
 expand = true
 
-[node name="Price" type="Control" parent="Camera/Control/Panel"]
+[node name="Price" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 541.0
-margin_bottom = 314.0
+margin_right = 493.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 7 )
 
-[node name="HSlider" type="HSlider" parent="Camera/Control/Panel/Price"]
+[node name="HSlider" type="HSlider" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -333,7 +374,7 @@ max_value = 1.0
 step = 0.01
 value = 0.5
 
-[node name="Small Money" type="TextureRect" parent="Camera/Control/Panel/Price"]
+[node name="Small Money" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -345,7 +386,7 @@ margin_bottom = -29.5
 texture = ExtResource( 13 )
 expand = true
 
-[node name="Big Money" type="TextureRect" parent="Camera/Control/Panel/Price"]
+[node name="Big Money" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -357,15 +398,17 @@ margin_bottom = -12.5
 texture = ExtResource( 13 )
 expand = true
 
-[node name="Graph" type="Control" parent="Camera/Control/Panel"]
+[node name="Graph" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 541.0
-margin_bottom = 314.0
+margin_right = 493.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 10 )
 
-[node name="X-Axis" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="X-Axis" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -375,7 +418,7 @@ margin_top = 66.5
 margin_right = 264.0
 margin_bottom = 70.5
 
-[node name="Y-Axis" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="Y-Axis" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -385,7 +428,7 @@ margin_top = -124.5
 margin_right = -215.5
 margin_bottom = 130.5
 
-[node name="ColorRect1" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="ColorRect1" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 margin_left = 90.0
 margin_top = 220.0
 margin_right = 115.0
@@ -394,7 +437,7 @@ rect_min_size = Vector2( 25, 0 )
 rect_rotation = 180.0
 color = Color( 0.243137, 0.65098, 0.345098, 1 )
 
-[node name="Label1" type="Label" parent="Camera/Control/Panel/Graph/ColorRect1"]
+[node name="Label1" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/ColorRect1"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_right = 146.0
@@ -403,7 +446,7 @@ rect_rotation = 90.0
 text = "999999999
 "
 
-[node name="ColorRect2" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="ColorRect2" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 margin_left = 150.0
 margin_top = 220.0
 margin_right = 175.0
@@ -412,7 +455,7 @@ rect_min_size = Vector2( 25, 0 )
 rect_rotation = 180.0
 color = Color( 0.243137, 0.65098, 0.345098, 1 )
 
-[node name="Label2" type="Label" parent="Camera/Control/Panel/Graph/ColorRect2"]
+[node name="Label2" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/ColorRect2"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_right = 146.0
@@ -421,7 +464,7 @@ rect_rotation = 90.0
 text = "999999999
 "
 
-[node name="ColorRect3" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="ColorRect3" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 margin_left = 210.0
 margin_top = 220.0
 margin_right = 235.0
@@ -430,7 +473,7 @@ rect_min_size = Vector2( 25, 0 )
 rect_rotation = 180.0
 color = Color( 0.243137, 0.65098, 0.345098, 1 )
 
-[node name="Label3" type="Label" parent="Camera/Control/Panel/Graph/ColorRect3"]
+[node name="Label3" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/ColorRect3"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_right = 146.0
@@ -439,7 +482,7 @@ rect_rotation = 90.0
 text = "999999999
 "
 
-[node name="ColorRect4" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="ColorRect4" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 margin_left = 270.0
 margin_top = 220.0
 margin_right = 295.0
@@ -448,7 +491,7 @@ rect_min_size = Vector2( 25, 0 )
 rect_rotation = 180.0
 color = Color( 0.243137, 0.65098, 0.345098, 1 )
 
-[node name="Label4" type="Label" parent="Camera/Control/Panel/Graph/ColorRect4"]
+[node name="Label4" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/ColorRect4"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_right = 146.0
@@ -457,7 +500,7 @@ rect_rotation = 90.0
 text = "999999999
 "
 
-[node name="ColorRect5" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="ColorRect5" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 margin_left = 330.0
 margin_top = 220.0
 margin_right = 355.0
@@ -466,7 +509,7 @@ rect_min_size = Vector2( 25, 0 )
 rect_rotation = 180.0
 color = Color( 0.243137, 0.65098, 0.345098, 1 )
 
-[node name="Label5" type="Label" parent="Camera/Control/Panel/Graph/ColorRect5"]
+[node name="Label5" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/ColorRect5"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_right = 146.0
@@ -475,7 +518,7 @@ rect_rotation = 90.0
 text = "999999999
 "
 
-[node name="ColorRect6" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="ColorRect6" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 margin_left = 390.0
 margin_top = 220.0
 margin_right = 415.0
@@ -484,7 +527,7 @@ rect_min_size = Vector2( 25, 0 )
 rect_rotation = 180.0
 color = Color( 0.243137, 0.65098, 0.345098, 1 )
 
-[node name="Label6" type="Label" parent="Camera/Control/Panel/Graph/ColorRect6"]
+[node name="Label6" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/ColorRect6"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_right = 146.0
@@ -493,7 +536,7 @@ rect_rotation = 90.0
 text = "999999999
 "
 
-[node name="ColorRect7" type="ColorRect" parent="Camera/Control/Panel/Graph"]
+[node name="ColorRect7" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph"]
 margin_left = 450.0
 margin_top = 220.0
 margin_right = 475.0
@@ -502,7 +545,7 @@ rect_min_size = Vector2( 25, 0 )
 rect_rotation = 180.0
 color = Color( 0.243137, 0.65098, 0.345098, 1 )
 
-[node name="Label7" type="Label" parent="Camera/Control/Panel/Graph/ColorRect7"]
+[node name="Label7" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/ColorRect7"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_right = 146.0
@@ -511,15 +554,16 @@ rect_rotation = 90.0
 text = "999999999
 "
 
-[node name="Grades" type="Control" parent="Camera/Control/Panel"]
+[node name="Grades" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 541.0
-margin_bottom = 314.0
+margin_top = -113.5
+margin_right = 548.0
+margin_bottom = 434.5
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 11 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Camera/Control/Panel/Grades"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -528,11 +572,13 @@ margin_left = -250.0
 margin_top = -32.0
 margin_right = 250.0
 margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource( 3 )
 custom_constants/separation = 20
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Camera/Control/Panel/Grades/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
 margin_left = 116.0
 margin_right = 216.0
 margin_bottom = 100.0
@@ -540,7 +586,7 @@ rect_min_size = Vector2( 100, 100 )
 texture = ExtResource( 26 )
 expand = true
 
-[node name="Equals" type="Label" parent="Camera/Control/Panel/Grades/HBoxContainer"]
+[node name="Equals" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
 margin_left = 236.0
 margin_top = 18.0
 margin_right = 300.0
@@ -551,7 +597,7 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="Grade" type="Label" parent="Camera/Control/Panel/Grades/HBoxContainer"]
+[node name="Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
 margin_left = 320.0
 margin_top = 18.0
 margin_right = 384.0
@@ -562,15 +608,16 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="ScoreSubmit" type="Control" parent="Camera/Control/Panel"]
+[node name="ScoreSubmit" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 541.0
-margin_bottom = 314.0
+margin_top = -113.5
+margin_right = 548.0
+margin_bottom = 434.5
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 27 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera/Control/Panel/ScoreSubmit"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -579,125 +626,490 @@ margin_left = -48.0
 margin_top = -28.0
 margin_right = 48.0
 margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Lables" type="VBoxContainer" parent="Camera/Control/Panel/ScoreSubmit/VBoxContainer"]
+[node name="Lables" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
 margin_right = 96.0
 margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
-[node name="Score Text" type="Label" parent="Camera/Control/Panel/ScoreSubmit/VBoxContainer/Lables"]
+[node name="Score Text" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
 margin_right = 96.0
 margin_bottom = 14.0
 text = "Total Score:"
 align = 1
 
-[node name="Score" type="Label" parent="Camera/Control/Panel/ScoreSubmit/VBoxContainer/Lables"]
+[node name="Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
 margin_top = 18.0
 margin_right = 96.0
 margin_bottom = 32.0
 text = "9999999999"
 align = 1
 
-[node name="PlayerName" type="TextEdit" parent="Camera/Control/Panel/ScoreSubmit/VBoxContainer"]
+[node name="PlayerName" type="LineEdit" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
 margin_top = 36.0
 margin_right = 96.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 96, 32 )
+focus_next = NodePath("../Button")
+max_length = 10
 
-[node name="Button" type="Button" parent="Camera/Control/Panel/ScoreSubmit/VBoxContainer"]
+[node name="Button" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
 margin_top = 72.0
 margin_right = 96.0
 margin_bottom = 92.0
 text = "Submit score"
 
-[node name="HighscoreBoard" type="Control" parent="Camera/Control/Panel"]
+[node name="HighscoreBoard" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 541.0
-margin_bottom = 314.0
+margin_right = 493.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 28 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera/Control/Panel/HighscoreBoard"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -200.0
-margin_top = -109.0
-margin_right = 200.0
-margin_bottom = 109.0
+margin_left = -250.0
+margin_top = -134.0
+margin_right = 250.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 32
 alignment = 1
 
-[node name="Label" type="Label" parent="Camera/Control/Panel/HighscoreBoard/VBoxContainer"]
-margin_right = 400.0
+[node name="Label" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer"]
+margin_right = 500.0
 margin_bottom = 14.0
 text = "High Scores"
 align = 1
 
-[node name="TextEdit" type="TextEdit" parent="Camera/Control/Panel/HighscoreBoard/VBoxContainer"]
-margin_top = 18.0
-margin_right = 400.0
-margin_bottom = 218.0
-rect_min_size = Vector2( 400, 200 )
-theme = SubResource( 4 )
-text = "Loading..."
+[node name="Scoreboard" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer"]
+margin_top = 46.0
+margin_right = 500.0
+margin_bottom = 222.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 
-[node name="Button1" type="Button" parent="Camera/Control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -274.0
-margin_top = 157.0
-margin_right = -174.0
-margin_bottom = 257.0
+[node name="Rank" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
+margin_right = 94.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="1" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_right = 94.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 20, 0 )
+text = "1."
+align = 1
+
+[node name="2" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 18.0
+margin_right = 94.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 20, 0 )
+text = "2."
+align = 1
+
+[node name="3" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 36.0
+margin_right = 94.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 20, 0 )
+text = "3."
+align = 1
+
+[node name="4" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 54.0
+margin_right = 94.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 20, 0 )
+text = "4."
+align = 1
+
+[node name="5" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 72.0
+margin_right = 94.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 20, 0 )
+text = "5."
+align = 1
+
+[node name="6" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 90.0
+margin_right = 94.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 20, 0 )
+text = "6."
+align = 1
+
+[node name="7" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 108.0
+margin_right = 94.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 20, 0 )
+text = "7."
+align = 1
+
+[node name="8" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 126.0
+margin_right = 94.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 20, 0 )
+text = "8."
+align = 1
+
+[node name="9" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 144.0
+margin_right = 94.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 20, 0 )
+text = "9."
+align = 1
+
+[node name="10" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
+margin_top = 162.0
+margin_right = 94.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 20, 0 )
+text = "10."
+align = 1
+
+[node name="PlayerNames" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
+margin_left = 98.0
+margin_right = 248.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Player1" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_right = 150.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player2" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 18.0
+margin_right = 150.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player3" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 36.0
+margin_right = 150.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player4" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 54.0
+margin_right = 150.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player5" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 72.0
+margin_right = 150.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player6" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 90.0
+margin_right = 150.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player7" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 108.0
+margin_right = 150.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player8" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 126.0
+margin_right = 150.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player9" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 144.0
+margin_right = 150.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Player10" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
+margin_top = 162.0
+margin_right = 150.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 150, 14 )
+text = "AAA"
+
+[node name="Scores" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
+margin_left = 252.0
+margin_right = 402.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Player1Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_right = 150.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 150, 0 )
+text = "10"
+
+[node name="Player2Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 18.0
+margin_right = 150.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 150, 0 )
+text = "9"
+
+[node name="Player3Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 36.0
+margin_right = 150.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 150, 0 )
+text = "8"
+
+[node name="Player4Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 54.0
+margin_right = 150.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 150, 0 )
+text = "7"
+
+[node name="Player5Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 72.0
+margin_right = 150.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 150, 0 )
+text = "6"
+
+[node name="Player6Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 90.0
+margin_right = 150.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 150, 0 )
+text = "5"
+
+[node name="Player7Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 108.0
+margin_right = 150.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 150, 0 )
+text = "4"
+
+[node name="Player8Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 126.0
+margin_right = 150.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 150, 0 )
+text = "3"
+
+[node name="Player9Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 144.0
+margin_right = 150.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 150, 0 )
+text = "2"
+
+[node name="Player10Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
+margin_top = 162.0
+margin_right = 150.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 150, 0 )
+text = "1"
+
+[node name="Grades" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
+margin_left = 406.0
+margin_right = 500.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Player1Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_right = 94.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 50, 0 )
+text = "I"
+align = 1
+
+[node name="Player2Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 18.0
+margin_right = 94.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 50, 0 )
+text = "H"
+align = 1
+
+[node name="Player3Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 36.0
+margin_right = 94.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 0 )
+text = "G"
+align = 1
+
+[node name="Player4Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 54.0
+margin_right = 94.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 50, 0 )
+text = "F"
+align = 1
+
+[node name="Player5Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 72.0
+margin_right = 94.0
+margin_bottom = 86.0
+rect_min_size = Vector2( 50, 0 )
+text = "E"
+align = 1
+
+[node name="Player6Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 90.0
+margin_right = 94.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 50, 0 )
+text = "D"
+align = 1
+
+[node name="Player7Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 108.0
+margin_right = 94.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 50, 0 )
+text = "C"
+align = 1
+
+[node name="Player8Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 126.0
+margin_right = 94.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 50, 0 )
+text = "B"
+align = 1
+
+[node name="Player9Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 144.0
+margin_right = 94.0
+margin_bottom = 158.0
+rect_min_size = Vector2( 50, 0 )
+text = "A"
+align = 1
+
+[node name="Player10Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
+margin_top = 162.0
+margin_right = 94.0
+margin_bottom = 176.0
+rect_min_size = Vector2( 50, 0 )
+text = "S"
+align = 1
+
+[node name="OwnScore" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer"]
+margin_top = 254.0
+margin_right = 500.0
+margin_bottom = 268.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="OwnRank" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/OwnScore"]
+margin_left = 59.0
+margin_right = 79.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 20, 0 )
+text = "11."
+align = 1
+
+[node name="OwnName" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/OwnScore"]
+margin_left = 83.0
+margin_right = 233.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 150, 0 )
+text = "AAA"
+
+[node name="OwnScore" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/OwnScore"]
+margin_left = 237.0
+margin_right = 387.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 150, 0 )
+text = "0"
+
+[node name="OwnGrade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/OwnScore"]
+margin_left = 391.0
+margin_right = 441.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 50, 0 )
+text = "A"
+align = 1
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
+margin_top = 371.0
+margin_right = 500.0
+margin_bottom = 396.0
+custom_constants/separation = 25
+
+[node name="Buttons" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
+margin_top = 400.0
+margin_right = 500.0
+margin_bottom = 500.0
+size_flags_horizontal = 7
+alignment = 1
+
+[node name="Button1" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
+margin_left = 96.0
+margin_right = 196.0
+margin_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 5
+size_flags_vertical = 0
 action_mode = 0
 icon = ExtResource( 14 )
 icon_align = 1
 expand_icon = true
 
-[node name="Button2" type="Button" parent="Camera/Control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -50.0
-margin_top = 157.0
-margin_right = 50.0
-margin_bottom = 257.0
+[node name="Button2" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
+margin_left = 200.0
+margin_right = 300.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 5
+size_flags_vertical = 0
 action_mode = 0
 icon = ExtResource( 12 )
 expand_icon = true
 
-[node name="Button3" type="Button" parent="Camera/Control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 174.0
-margin_top = 157.0
-margin_right = 274.0
-margin_bottom = 257.0
+[node name="Button3" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
+margin_left = 304.0
+margin_right = 404.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 5
+size_flags_vertical = 0
 action_mode = 0
 icon = ExtResource( 13 )
-expand_icon = true
-
-[node name="Button4" type="Button" parent="Camera/Control"]
-visible = false
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 362.0
-margin_top = 157.0
-margin_right = 462.0
-margin_bottom = 257.0
-rect_min_size = Vector2( 100, 100 )
-action_mode = 0
-icon = ExtResource( 29 )
 expand_icon = true
 
 [node name="Skitse1" parent="." instance=ExtResource( 8 )]
@@ -706,21 +1118,21 @@ expand_icon = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -49.982, 0, -40.7995 )
 mesh = SubResource( 1 )
 
-[connection signal="pressed" from="Camera/Control/Panel/TextureButton" to="Camera/Control/Panel" method="_on_ExitButton_pressed"]
-[connection signal="has_interacted" from="Camera/Control/Panel/Ingredients" to="Camera/Control" method="_on_Set1_has_interacted"]
-[connection signal="contents_updated" from="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot1" to="Camera/Control/Panel/Ingredients" method="_on_slot_contents_updated"]
-[connection signal="pressed" from="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot1" to="Camera/Control/Panel/Ingredients" method="_on_TextureButton1_pressed"]
-[connection signal="contents_updated" from="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot2" to="Camera/Control/Panel/Ingredients" method="_on_slot_contents_updated"]
-[connection signal="pressed" from="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot2" to="Camera/Control/Panel/Ingredients" method="_on_TextureButton2_pressed"]
-[connection signal="contents_updated" from="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot3" to="Camera/Control/Panel/Ingredients" method="_on_slot_contents_updated"]
-[connection signal="pressed" from="Camera/Control/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot3" to="Camera/Control/Panel/Ingredients" method="_on_TextureButton3_pressed"]
-[connection signal="has_interacted" from="Camera/Control/Panel/VegMeatRatio" to="Camera/Control" method="_on_Set2_has_interacted"]
-[connection signal="drag_ended" from="Camera/Control/Panel/VegMeatRatio/HSlider" to="Camera/Control/Panel/VegMeatRatio" method="_on_HSlider_drag_ended"]
-[connection signal="has_interacted" from="Camera/Control/Panel/Price" to="Camera/Control" method="_on_Set3_has_interacted"]
-[connection signal="drag_ended" from="Camera/Control/Panel/Price/HSlider" to="Camera/Control/Panel/Price" method="_on_HSlider_drag_ended"]
-[connection signal="addToRequestQueue" from="Camera/Control/Panel/ScoreSubmit" to="Camera/Control" method="addToRequestQueue"]
-[connection signal="pressed" from="Camera/Control/Panel/ScoreSubmit/VBoxContainer/Button" to="Camera/Control/Panel/ScoreSubmit" method="_submit_score"]
-[connection signal="pressed" from="Camera/Control/Button1" to="Camera/Control" method="_on_Button1_pressed"]
-[connection signal="pressed" from="Camera/Control/Button2" to="Camera/Control" method="_on_Button2_pressed"]
-[connection signal="pressed" from="Camera/Control/Button3" to="Camera/Control" method="_on_Button3_pressed"]
-[connection signal="pressed" from="Camera/Control/Button4" to="Camera/Control" method="_on_Button4_pressed"]
+[connection signal="pressed" from="Camera/Button4" to="Camera/MainUI" method="_on_Button4_pressed"]
+[connection signal="has_interacted" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" to="Camera/MainUI" method="_on_Set1_has_interacted"]
+[connection signal="contents_updated" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot1" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_slot_contents_updated"]
+[connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot1" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_TextureButton1_pressed"]
+[connection signal="contents_updated" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot2" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_slot_contents_updated"]
+[connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot2" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_TextureButton2_pressed"]
+[connection signal="contents_updated" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot3" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_slot_contents_updated"]
+[connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot3" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_TextureButton3_pressed"]
+[connection signal="has_interacted" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio" to="Camera/MainUI" method="_on_Set2_has_interacted"]
+[connection signal="drag_ended" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/HSlider" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio" method="_on_HSlider_drag_ended"]
+[connection signal="has_interacted" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price" to="Camera/MainUI" method="_on_Set3_has_interacted"]
+[connection signal="drag_ended" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price/HSlider" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price" method="_on_HSlider_drag_ended"]
+[connection signal="addToRequestQueue" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit" to="Camera/MainUI" method="addToRequestQueue"]
+[connection signal="text_entered" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/PlayerName" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit" method="_submit_score"]
+[connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Button" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit" method="_submit_score"]
+[connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/Button1" to="Camera/MainUI" method="_on_Button1_pressed"]
+[connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/Button2" to="Camera/MainUI" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/Button3" to="Camera/MainUI" method="_on_Button3_pressed"]

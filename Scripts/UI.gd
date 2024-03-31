@@ -1,13 +1,13 @@
 extends Control
 
-onready var window = $Panel
-onready var set1 = $Panel/Ingredients
-onready var set2 = $Panel/VegMeatRatio
-onready var set3 = $Panel/Price
-onready var set4 = $Panel/Graph
-onready var set5 = $Panel/Grades
-onready var set6 = $Panel/ScoreSubmit
-onready var set7 = $Panel/HighscoreBoard
+onready var window = $VBoxContainer/Panel
+onready var set1 = $VBoxContainer/Panel/Ingredients
+onready var set2 = $VBoxContainer/Panel/VegMeatRatio
+onready var set3 = $VBoxContainer/Panel/Price
+onready var set4 = $VBoxContainer/Panel/Graph
+onready var set5 = $VBoxContainer/Panel/Grades
+onready var set6 = $VBoxContainer/Panel/ScoreSubmit
+onready var set7 = $VBoxContainer/Panel/HighscoreBoard
 onready var restartIcon = "res://Icons/Restart.png"
 
 var rng = RandomNumberGenerator.new()
