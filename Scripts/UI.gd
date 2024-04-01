@@ -8,7 +8,7 @@ onready var set4 = $AspectRatioContainer/VBoxContainer/Panel/Graph
 onready var set5 = $AspectRatioContainer/VBoxContainer/Panel/Grades
 onready var set6 = $AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit
 onready var set7 = $AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard
-onready var button4 = $"../Button4"
+onready var button4 = $Button4
 onready var restartIcon = "res://Icons/Restart.png"
 
 var rng = RandomNumberGenerator.new()
@@ -104,12 +104,15 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		_on_Button4_pressed()
 #		emit_signal("response", "An array of size 0 was recieved")
 	if response['response']['size'] > 0:
-		var totalResponse:String = ""
+#		var totalResponse:String = ""
 		for n in (response['response']['size']):
-			totalResponse = totalResponse + String(response['response'][String(n)]['player_name']) + "\t\t" + String(response['response'][String(n)]['score']) + "\t\t" + String(response["response"][String(n)]["grade"]) + "\n"
-			emit_signal("completedScoreFetching")
-			setServerResponseBody(totalResponse)
+			set7.playerNames[n].text = String(response["response"][String(n)]["player_name"])
+			set7.playerScores[n].text = String(response["response"][String(n)]["score"])
+			set7.playerGrades[n].text = String(response["response"][String(n)]["grade"])
+#			totalResponse = totalResponse + String(response['response'][String(n)]['player_name']) + "\t\t" + String(response['response'][String(n)]['score']) + "\t\t" + String(response["response"][String(n)]["grade"]) + "\n"
+#			emit_signal("completedScoreFetching")
 #			emit_signal("response", totalResponse)
+#		setServerResponseBody(totalResponse)
 
 func request_nonce():
 	var client = HTTPClient.new()
@@ -256,7 +259,6 @@ func showScreen(set:Control):
 func setServerResponseBody(body):
 	serverResponseBody = body
 	print("serverResponseBody: ", serverResponseBody)
-	set7.board.text = serverResponseBody
 
 func getScores():
 	var command = "get_scores"
