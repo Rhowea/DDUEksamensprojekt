@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://Styling/OpenSans-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 13
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[resource]
+/fonts/Font = SubResource( 1 )
+Label/fonts/font = SubResource( 2 )

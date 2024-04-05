@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://Icons/DollarSmall.png" type="Texture" id=2]
@@ -30,6 +30,9 @@
 [ext_resource path="res://Scripts/HighscoreBoard.gd" type="Script" id=28]
 [ext_resource path="res://Icons/Play.png" type="Texture" id=29]
 [ext_resource path="res://Icons/Plantbeef.png" type="Texture" id=30]
+[ext_resource path="res://Styling/mainTheme.tres" type="Theme" id=31]
+[ext_resource path="res://Styling/GradeTheme.tres" type="Theme" id=32]
+[ext_resource path="res://Scenes/Ingredients.tscn" type="PackedScene" id=33]
 
 [sub_resource type="Theme" id=2]
 
@@ -85,7 +88,6 @@ custom_constants/separation = 50
 alignment = 2
 
 [node name="Panel" type="PanelContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
-visible = false
 margin_right = 450.0
 margin_bottom = 300.0
 size_flags_horizontal = 3
@@ -94,7 +96,6 @@ theme = SubResource( 2 )
 script = ExtResource( 9 )
 
 [node name="Ingredients" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
-visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 443.0
@@ -112,14 +113,14 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
 margin_right = 436.0
-margin_bottom = 286.0
+margin_bottom = 141.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Slot1" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
 margin_right = 142.0
-margin_bottom = 286.0
+margin_bottom = 141.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 100 )
@@ -134,7 +135,7 @@ script = ExtResource( 5 )
 [node name="Slot2" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
 margin_left = 146.0
 margin_right = 289.0
-margin_bottom = 286.0
+margin_bottom = 141.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 100 )
@@ -150,7 +151,7 @@ slotNumber = 1
 [node name="Slot3" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
 margin_left = 293.0
 margin_right = 436.0
-margin_bottom = 286.0
+margin_bottom = 141.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 100, 100 )
@@ -164,25 +165,13 @@ script = ExtResource( 5 )
 slotNumber = 2
 
 [node name="Ingredients1" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
-visible = false
 margin_top = 145.0
 margin_right = 436.0
 margin_bottom = 286.0
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Veg1" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1"]
-margin_right = 142.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "Carrot"
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource( 15 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
-ingredientName = "Carrot"
+[node name="Veg1" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1" instance=ExtResource( 33 )]
 
 [node name="Veg2" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1"]
 margin_left = 146.0
@@ -225,7 +214,7 @@ alignment = 1
 margin_right = 106.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-hint_tooltip = "Chickpeas"
+hint_tooltip = "Plant Beef"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 30 )
@@ -639,31 +628,36 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
-margin_left = 84.0
-margin_right = 184.0
+margin_right = 132.0
 margin_bottom = 286.0
 rect_min_size = Vector2( 100, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 7
 texture = ExtResource( 26 )
 expand = true
 stretch_mode = 6
 
 [node name="Equals" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
-margin_left = 204.0
-margin_top = 111.0
-margin_right = 268.0
-margin_bottom = 175.0
+margin_left = 152.0
+margin_right = 284.0
+margin_bottom = 286.0
 rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme = ExtResource( 32 )
 text = "="
 align = 1
 valign = 1
 uppercase = true
 
 [node name="Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
-margin_left = 288.0
-margin_top = 111.0
-margin_right = 352.0
-margin_bottom = 175.0
+margin_left = 304.0
+margin_right = 436.0
+margin_bottom = 286.0
 rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme = ExtResource( 32 )
 text = "g"
 align = 1
 valign = 1
@@ -755,122 +749,133 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer"]
 margin_right = 436.0
-margin_bottom = 51.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "High Scores"
 align = 1
 valign = 1
 
 [node name="Scoreboard" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer"]
-margin_top = 55.0
+margin_top = 35.0
 margin_right = 436.0
-margin_bottom = 231.0
+margin_bottom = 251.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Rank" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
 margin_right = 62.0
-margin_bottom = 176.0
+margin_bottom = 216.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="1" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
 margin_right = 62.0
-margin_bottom = 14.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "1."
 align = 1
 valign = 1
 
 [node name="2" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 18.0
+margin_top = 22.0
 margin_right = 62.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "2."
 align = 1
 valign = 1
 
 [node name="3" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 36.0
+margin_top = 44.0
 margin_right = 62.0
-margin_bottom = 50.0
+margin_bottom = 62.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "3."
 align = 1
 valign = 1
 
 [node name="4" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 54.0
+margin_top = 66.0
 margin_right = 62.0
-margin_bottom = 68.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "4."
 align = 1
 valign = 1
 
 [node name="5" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 72.0
+margin_top = 88.0
 margin_right = 62.0
-margin_bottom = 86.0
+margin_bottom = 106.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "5."
 align = 1
 valign = 1
 
 [node name="6" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 90.0
+margin_top = 110.0
 margin_right = 62.0
-margin_bottom = 104.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "6."
 align = 1
 valign = 1
 
 [node name="7" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 108.0
+margin_top = 132.0
 margin_right = 62.0
-margin_bottom = 122.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "7."
 align = 1
 valign = 1
 
 [node name="8" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 126.0
+margin_top = 154.0
 margin_right = 62.0
-margin_bottom = 140.0
+margin_bottom = 172.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "8."
 align = 1
 valign = 1
 
 [node name="9" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 144.0
+margin_top = 176.0
 margin_right = 62.0
-margin_bottom = 158.0
+margin_bottom = 194.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "9."
 align = 1
 valign = 1
 
 [node name="10" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Rank"]
-margin_top = 162.0
+margin_top = 198.0
 margin_right = 62.0
-margin_bottom = 176.0
+margin_bottom = 216.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "10."
 align = 1
 valign = 1
@@ -878,303 +883,334 @@ valign = 1
 [node name="PlayerNames" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
 margin_left = 66.0
 margin_right = 216.0
-margin_bottom = 176.0
+margin_bottom = 216.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Player1" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
 margin_right = 150.0
-margin_bottom = 14.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player2" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 18.0
+margin_top = 22.0
 margin_right = 150.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player3" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 36.0
+margin_top = 44.0
 margin_right = 150.0
-margin_bottom = 50.0
+margin_bottom = 62.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player4" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 54.0
+margin_top = 66.0
 margin_right = 150.0
-margin_bottom = 68.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player5" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 72.0
+margin_top = 88.0
 margin_right = 150.0
-margin_bottom = 86.0
+margin_bottom = 106.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player6" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 90.0
+margin_top = 110.0
 margin_right = 150.0
-margin_bottom = 104.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player7" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 108.0
+margin_top = 132.0
 margin_right = 150.0
-margin_bottom = 122.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player8" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 126.0
+margin_top = 154.0
 margin_right = 150.0
-margin_bottom = 140.0
+margin_bottom = 172.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player9" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 144.0
+margin_top = 176.0
 margin_right = 150.0
-margin_bottom = 158.0
+margin_bottom = 194.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player10" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
-margin_top = 162.0
+margin_top = 198.0
 margin_right = 150.0
-margin_bottom = 176.0
+margin_bottom = 216.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Scores" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
 margin_left = 220.0
 margin_right = 370.0
-margin_bottom = 176.0
+margin_bottom = 216.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Player1Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
 margin_right = 150.0
-margin_bottom = 14.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player2Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 18.0
+margin_top = 22.0
 margin_right = 150.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player3Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 36.0
+margin_top = 44.0
 margin_right = 150.0
-margin_bottom = 50.0
+margin_bottom = 62.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player4Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 54.0
+margin_top = 66.0
 margin_right = 150.0
-margin_bottom = 68.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player5Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 72.0
+margin_top = 88.0
 margin_right = 150.0
-margin_bottom = 86.0
+margin_bottom = 106.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player6Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 90.0
+margin_top = 110.0
 margin_right = 150.0
-margin_bottom = 104.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player7Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 108.0
+margin_top = 132.0
 margin_right = 150.0
-margin_bottom = 122.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player8Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 126.0
+margin_top = 154.0
 margin_right = 150.0
-margin_bottom = 140.0
+margin_bottom = 172.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player9Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 144.0
+margin_top = 176.0
 margin_right = 150.0
-margin_bottom = 158.0
+margin_bottom = 194.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Player10Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
-margin_top = 162.0
+margin_top = 198.0
 margin_right = 150.0
-margin_bottom = 176.0
+margin_bottom = 216.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "Loading..."
 valign = 1
 
 [node name="Grades" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
 margin_left = 374.0
 margin_right = 436.0
-margin_bottom = 176.0
+margin_bottom = 216.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource( 31 )
 
 [node name="Player1Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
 margin_right = 62.0
-margin_bottom = 14.0
+margin_bottom = 18.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player2Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 18.0
+margin_top = 22.0
 margin_right = 62.0
-margin_bottom = 32.0
+margin_bottom = 40.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player3Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 36.0
+margin_top = 44.0
 margin_right = 62.0
-margin_bottom = 50.0
+margin_bottom = 62.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player4Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 54.0
+margin_top = 66.0
 margin_right = 62.0
-margin_bottom = 68.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player5Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 72.0
+margin_top = 88.0
 margin_right = 62.0
-margin_bottom = 86.0
+margin_bottom = 106.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player6Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 90.0
+margin_top = 110.0
 margin_right = 62.0
-margin_bottom = 104.0
+margin_bottom = 128.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player7Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 108.0
+margin_top = 132.0
 margin_right = 62.0
-margin_bottom = 122.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player8Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 126.0
+margin_top = 154.0
 margin_right = 62.0
-margin_bottom = 140.0
+margin_bottom = 172.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player9Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 144.0
+margin_top = 176.0
 margin_right = 62.0
-margin_bottom = 158.0
+margin_bottom = 194.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="Player10Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Grades"]
-margin_top = 162.0
+margin_top = 198.0
 margin_right = 62.0
-margin_bottom = 176.0
+margin_bottom = 216.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 align = 1
 valign = 1
 
 [node name="OwnScore" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer"]
-margin_top = 235.0
+margin_top = 255.0
 margin_right = 436.0
 margin_bottom = 286.0
 size_flags_horizontal = 3
@@ -1183,10 +1219,11 @@ alignment = 1
 
 [node name="OwnRank" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/OwnScore"]
 margin_right = 62.0
-margin_bottom = 51.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 20, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "11."
 align = 1
 valign = 1
@@ -1194,30 +1231,33 @@ valign = 1
 [node name="OwnName" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/OwnScore"]
 margin_left = 66.0
 margin_right = 216.0
-margin_bottom = 51.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "AAA"
 valign = 1
 
 [node name="OwnScore" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/OwnScore"]
 margin_left = 220.0
 margin_right = 370.0
-margin_bottom = 51.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "0"
 valign = 1
 
 [node name="OwnGrade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/OwnScore"]
 margin_left = 374.0
 margin_right = 436.0
-margin_bottom = 51.0
+margin_bottom = 31.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
+theme = ExtResource( 31 )
 text = "A"
 align = 1
 valign = 1

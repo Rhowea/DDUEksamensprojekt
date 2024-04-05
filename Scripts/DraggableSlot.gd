@@ -6,12 +6,12 @@ signal contents_updated
 var possibleIngredients = {0: ["Carrot", "Potato", "Tomato"], 1: ["Chickpeas", "Fish", "Beef", "Chicken"], 2: ["Water", "Soda", "Energy Drink"]}
 var contents = null
 
-func can_drop_data(position, data):
+func can_drop_data(_position, data):
 	return typeof(data) == TYPE_ARRAY and possibleIngredients[slotNumber].has(data[0])
 
-func drop_data(position, data):
+func drop_data(_position, data):
 	contents = data[0]
 	self.texture_normal = data[1]
-	print(contents)
-	print("Something was dropped")
+#	print(contents)
+#	print("Something was dropped")
 	emit_signal("contents_updated")

@@ -49,7 +49,7 @@ func _ready():
 	add_child(http_request)
 	http_request.connect("request_completed",self,"_http_request_completed")
 
-func _process(delta):
+func _process(_delta):
 	if is_requesting:
 		return
 	if request_queue.empty():
@@ -109,10 +109,6 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 			set7.playerNames[n].text = String(response["response"][String(n)]["player_name"])
 			set7.playerScores[n].text = String(response["response"][String(n)]["score"])
 			set7.playerGrades[n].text = String(response["response"][String(n)]["grade"])
-#			totalResponse = totalResponse + String(response['response'][String(n)]['player_name']) + "\t\t" + String(response['response'][String(n)]['score']) + "\t\t" + String(response["response"][String(n)]["grade"]) + "\n"
-#			emit_signal("completedScoreFetching")
-#			emit_signal("response", totalResponse)
-#		setServerResponseBody(totalResponse)
 	if response["response"]["size"] == 1:
 		set7.ownRank.text = String(response["response"]["0"]["rank"])
 		set7.ownName.text = String(response["response"]["0"]["player_name"])
@@ -215,8 +211,8 @@ func calcAttract():
 func calcIngredientAttract():
 	return ingredients[set1.slot1.contents][0] + ingredients[set1.slot2.contents][0] + ingredients[set1.slot3.contents][0]
 
-func calcCustomerRatioOfBuyers(price, attract):
-	return pow((price - 1), 2) + pow(attract, 2)
+func calcCustomerRatioOfBuyers(priceOfMeal, attract):
+	return pow((priceOfMeal - 1), 2) + pow(attract, 2)
 
 func calcAmountOfCustomers():
 	rng.randomize()	

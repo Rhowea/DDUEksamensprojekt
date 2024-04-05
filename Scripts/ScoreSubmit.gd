@@ -3,7 +3,6 @@ extends Control
 onready var scoreLabel = $VBoxContainer/Lables/Score
 onready var playerNameLine = $VBoxContainer/PlayerName
 var grade = "G"
-var playerName
 signal addToRequestQueue(body)
 var scoreSubmitted = false
 
