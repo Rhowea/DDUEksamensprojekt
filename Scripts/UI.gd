@@ -103,7 +103,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		setServerResponseBody("An array of size 0 was received")
 		_on_Button4_pressed()
 #		emit_signal("response", "An array of size 0 was recieved")
-	if response['response']['size'] > 0:
+	if response['response']['size'] > 1:
 #		var totalResponse:String = ""
 		for n in (response['response']['size']):
 			set7.playerNames[n].text = String(response["response"][String(n)]["player_name"])
@@ -113,6 +113,12 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 #			emit_signal("completedScoreFetching")
 #			emit_signal("response", totalResponse)
 #		setServerResponseBody(totalResponse)
+	if response["response"]["size"] == 1:
+		set7.ownRank.text = String(response["response"]["0"]["rank"])
+		set7.ownName.text = String(response["response"]["0"]["player_name"])
+		set7.ownScore.text = String(response["response"]["0"]["score"])
+		set7.ownGrade.text = String(response["response"]["0"]["grade"])
+		
 
 func request_nonce():
 	var client = HTTPClient.new()
@@ -264,5 +270,11 @@ func getScores():
 	var command = "get_scores"
 	var data = {"score_ofset" : 0, "score_number" : 10}
 	var request := {"command" : command, "data" : data}
-	addToRequestQueue(request)
 	print("getting scores")
+	addToRequestQueue(request)
+	var command2 = "get_player"
+	var data2 = {"player_name" : set6.playerNameLine.get_text()}
+	print("data2: ", data2)
+	var request2 := {"command" : command2, "data" : data2}
+	print("Getting own score")
+	addToRequestQueue(request2)

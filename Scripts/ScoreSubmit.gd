@@ -1,19 +1,20 @@
 extends Control
 
 onready var scoreLabel = $VBoxContainer/Lables/Score
-onready var playerNameLabel = $VBoxContainer/PlayerName
+onready var playerNameLine = $VBoxContainer/PlayerName
 var grade = "G"
+var playerName
 signal addToRequestQueue(body)
 var scoreSubmitted = false
 
 func _submit_score(_text):
-	if scoreSubmitted == false and playerNameLabel.text != "":
+	if scoreSubmitted == false and playerNameLine.text != "":
 		scoreSubmitted = true
 #		if playerNameLabel.text != "":
-		var user_name = playerNameLabel.get_text()
+		var playerName = playerNameLine.text
 		var score = scoreLabel.get_text()
 		var command = "add_score"
-		var data = {"username" : user_name, "score" : score, "grade" : grade}
+		var data = {"username" : playerName, "score" : score, "grade" : grade}
 		emit_signal("addToRequestQueue", {"command" : command, "data" : data})
 	#	request_queue.push_back({"command" : command, "data" : data})
 

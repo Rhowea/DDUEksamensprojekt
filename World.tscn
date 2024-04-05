@@ -85,6 +85,7 @@ custom_constants/separation = 50
 alignment = 2
 
 [node name="Panel" type="PanelContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
+visible = false
 margin_right = 450.0
 margin_bottom = 300.0
 size_flags_horizontal = 3
@@ -438,6 +439,7 @@ value = 0.5
 tick_count = 9
 
 [node name="Graph" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
+visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 443.0
@@ -598,9 +600,9 @@ text = "999999999
 "
 
 [node name="ColorRect7" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/Bars"]
-margin_left = 324.0
+margin_left = 323.0
 margin_top = 201.0
-margin_right = 349.0
+margin_right = 348.0
 margin_bottom = 201.0
 rect_min_size = Vector2( 25, 0 )
 size_flags_horizontal = 6
@@ -886,7 +888,7 @@ margin_bottom = 14.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player2" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -896,7 +898,7 @@ margin_bottom = 32.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player3" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -906,7 +908,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player4" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -916,7 +918,7 @@ margin_bottom = 68.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player5" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -926,7 +928,7 @@ margin_bottom = 86.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player6" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -936,7 +938,7 @@ margin_bottom = 104.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player7" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -946,7 +948,7 @@ margin_bottom = 122.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player8" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -956,7 +958,7 @@ margin_bottom = 140.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player9" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -966,7 +968,7 @@ margin_bottom = 158.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Player10" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/PlayerNames"]
@@ -976,7 +978,7 @@ margin_bottom = 176.0
 rect_min_size = Vector2( 150, 14 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "AAA"
+text = "Loading..."
 valign = 1
 
 [node name="Scores" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
@@ -991,7 +993,7 @@ margin_right = 150.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "10"
+text = "Loading..."
 valign = 1
 
 [node name="Player2Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1000,7 +1002,7 @@ margin_right = 150.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "9"
+text = "Loading..."
 valign = 1
 
 [node name="Player3Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1009,7 +1011,7 @@ margin_right = 150.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "8"
+text = "Loading..."
 valign = 1
 
 [node name="Player4Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1018,7 +1020,7 @@ margin_right = 150.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "7"
+text = "Loading..."
 valign = 1
 
 [node name="Player5Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1027,7 +1029,7 @@ margin_right = 150.0
 margin_bottom = 86.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "6"
+text = "Loading..."
 valign = 1
 
 [node name="Player6Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1036,7 +1038,7 @@ margin_right = 150.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "5"
+text = "Loading..."
 valign = 1
 
 [node name="Player7Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1045,7 +1047,7 @@ margin_right = 150.0
 margin_bottom = 122.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "4"
+text = "Loading..."
 valign = 1
 
 [node name="Player8Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1054,7 +1056,7 @@ margin_right = 150.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "3"
+text = "Loading..."
 valign = 1
 
 [node name="Player9Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1063,7 +1065,7 @@ margin_right = 150.0
 margin_bottom = 158.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "2"
+text = "Loading..."
 valign = 1
 
 [node name="Player10Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard/Scores"]
@@ -1072,7 +1074,7 @@ margin_right = 150.0
 margin_bottom = 176.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_vertical = 7
-text = "1"
+text = "Loading..."
 valign = 1
 
 [node name="Grades" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer/Scoreboard"]
@@ -1087,7 +1089,6 @@ margin_right = 62.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "I"
 align = 1
 valign = 1
 
@@ -1097,7 +1098,6 @@ margin_right = 62.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "H"
 align = 1
 valign = 1
 
@@ -1107,7 +1107,6 @@ margin_right = 62.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "G"
 align = 1
 valign = 1
 
@@ -1117,7 +1116,6 @@ margin_right = 62.0
 margin_bottom = 68.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "F"
 align = 1
 valign = 1
 
@@ -1127,7 +1125,6 @@ margin_right = 62.0
 margin_bottom = 86.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "E"
 align = 1
 valign = 1
 
@@ -1137,7 +1134,6 @@ margin_right = 62.0
 margin_bottom = 104.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "D"
 align = 1
 valign = 1
 
@@ -1147,7 +1143,6 @@ margin_right = 62.0
 margin_bottom = 122.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "C"
 align = 1
 valign = 1
 
@@ -1157,7 +1152,6 @@ margin_right = 62.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "B"
 align = 1
 valign = 1
 
@@ -1167,7 +1161,6 @@ margin_right = 62.0
 margin_bottom = 158.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "A"
 align = 1
 valign = 1
 
@@ -1177,7 +1170,6 @@ margin_right = 62.0
 margin_bottom = 176.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_vertical = 7
-text = "S"
 align = 1
 valign = 1
 
