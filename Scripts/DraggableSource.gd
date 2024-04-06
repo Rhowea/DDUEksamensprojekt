@@ -3,6 +3,9 @@ extends TextureRect
 export var ingredientName:String
 onready var animPlayer = $AnimationPlayer
 
+func _ready():
+	hint_tooltip = ingredientName
+
 func get_drag_data(_position):
 	var icon = self.texture
 	var data = [ingredientName, icon]
@@ -15,5 +18,9 @@ func get_drag_data(_position):
 	return data
 
 func _mouse_entered():
-	pass
+	animPlayer.play("bounce")
 	#play animation
+
+func _mouse_exited():
+	animPlayer.play("RESET")
+

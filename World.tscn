@@ -1,10 +1,9 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://Icons/DollarSmall.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Set1.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/DraggableSource.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/DraggableSlot.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/RatioIcon.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Set2.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/Set3.gd" type="Script" id=7]
 [ext_resource path="res://3d/Scenes/Skitse1.tscn" type="PackedScene" id=8]
@@ -24,7 +23,6 @@
 [ext_resource path="res://Icons/Energy Drink.png" type="Texture" id=22]
 [ext_resource path="res://Icons/Potato.png" type="Texture" id=23]
 [ext_resource path="res://Icons/Water.png" type="Texture" id=24]
-[ext_resource path="res://Icons/Rounded Slot.png" type="Texture" id=25]
 [ext_resource path="res://Icons/Health and Eco.png" type="Texture" id=26]
 [ext_resource path="res://Scripts/ScoreSubmit.gd" type="Script" id=27]
 [ext_resource path="res://Scripts/HighscoreBoard.gd" type="Script" id=28]
@@ -33,6 +31,7 @@
 [ext_resource path="res://Styling/mainTheme.tres" type="Theme" id=31]
 [ext_resource path="res://Styling/GradeTheme.tres" type="Theme" id=32]
 [ext_resource path="res://Scenes/Ingredients.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Scenes/Slots.tscn" type="PackedScene" id=34]
 
 [sub_resource type="Theme" id=2]
 
@@ -96,6 +95,7 @@ theme = SubResource( 2 )
 script = ExtResource( 9 )
 
 [node name="Ingredients" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
+visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 443.0
@@ -107,216 +107,153 @@ script = ExtResource( 3 )
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-size_flags_horizontal = 3
+margin_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
-margin_right = 436.0
-margin_bottom = 141.0
+margin_right = 437.0
+margin_bottom = 286.0
+rect_min_size = Vector2( 0, 140 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Slot1" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
-margin_right = 142.0
-margin_bottom = 141.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
-action_mode = 0
-texture_normal = ExtResource( 25 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 5 )
+[node name="Slot1" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer" instance=ExtResource( 34 )]
+margin_left = 11.0
+margin_top = 83.0
+margin_right = 131.0
+margin_bottom = 203.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
-[node name="Slot2" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
-margin_left = 146.0
-margin_right = 289.0
-margin_bottom = 141.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
-action_mode = 0
-texture_normal = ExtResource( 25 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 5 )
+[node name="Slot2" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer" instance=ExtResource( 34 )]
+margin_left = 158.0
+margin_top = 83.0
+margin_right = 278.0
+margin_bottom = 203.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
 slotNumber = 1
 
-[node name="Slot3" type="TextureButton" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer"]
-margin_left = 293.0
-margin_right = 436.0
-margin_bottom = 141.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
-action_mode = 0
-texture_normal = ExtResource( 25 )
-expand = true
-stretch_mode = 5
-script = ExtResource( 5 )
+[node name="Slot3" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer" instance=ExtResource( 34 )]
+margin_left = 305.0
+margin_top = 83.0
+margin_right = 425.0
+margin_bottom = 203.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
 slotNumber = 2
 
 [node name="Ingredients1" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
+visible = false
 margin_top = 145.0
-margin_right = 436.0
+margin_right = 437.0
 margin_bottom = 286.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Veg1" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1" instance=ExtResource( 33 )]
+margin_left = 11.0
+margin_top = 10.0
+margin_right = 131.0
+margin_bottom = 130.0
+texture = ExtResource( 15 )
 
-[node name="Veg2" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1"]
-margin_left = 146.0
-margin_right = 289.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "Potato"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Veg2" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1" instance=ExtResource( 33 )]
+margin_left = 158.0
+margin_top = 10.0
+margin_right = 278.0
+margin_bottom = 130.0
 texture = ExtResource( 23 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Potato"
 
-[node name="Veg3" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1"]
-margin_left = 293.0
-margin_right = 436.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 64, 64 )
-hint_tooltip = "Tomato"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Veg3" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1" instance=ExtResource( 33 )]
+margin_left = 305.0
+margin_top = 10.0
+margin_right = 425.0
+margin_bottom = 130.0
 texture = ExtResource( 19 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Tomato"
 
 [node name="Ingredients2" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
 visible = false
-margin_top = 186.0
-margin_right = 436.0
-margin_bottom = 286.0
+margin_top = 144.0
+margin_right = 437.0
+margin_bottom = 234.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Meat1" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2"]
-margin_right = 106.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-hint_tooltip = "Plant Beef"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Meat1" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2" instance=ExtResource( 33 )]
+margin_left = 8.0
+margin_top = 0.0
+margin_right = 98.0
+margin_bottom = 90.0
 texture = ExtResource( 30 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Chickpeas"
 
-[node name="Meat2" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2"]
-margin_left = 110.0
-margin_right = 216.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-hint_tooltip = "Fish"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Meat5" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2" instance=ExtResource( 33 )]
+margin_left = 118.0
+margin_top = 0.0
+margin_right = 208.0
+margin_bottom = 90.0
 texture = ExtResource( 17 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Fish"
 
-[node name="Meat3" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2"]
-margin_left = 220.0
-margin_right = 326.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-hint_tooltip = "Beef"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Meat6" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2" instance=ExtResource( 33 )]
+margin_left = 228.0
+margin_top = 0.0
+margin_right = 318.0
+margin_bottom = 90.0
 texture = ExtResource( 20 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Beef"
 
-[node name="Meat4" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2"]
-margin_left = 330.0
-margin_right = 436.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-hint_tooltip = "Chicken"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Meat7" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients2" instance=ExtResource( 33 )]
+margin_left = 338.0
+margin_top = 0.0
+margin_right = 428.0
+margin_bottom = 90.0
 texture = ExtResource( 18 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Chicken"
 
 [node name="Ingredients3" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
 visible = false
 margin_top = 145.0
-margin_right = 436.0
+margin_right = 437.0
 margin_bottom = 286.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Drink1" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3"]
-margin_right = 142.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 100, 100 )
-hint_tooltip = "Water"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Drink1" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3" instance=ExtResource( 33 )]
+margin_left = 26.0
+margin_top = 25.0
+margin_right = 116.0
+margin_bottom = 115.0
 texture = ExtResource( 24 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Water"
 
-[node name="Drink2" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3"]
-margin_left = 146.0
-margin_right = 289.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 100, 100 )
-hint_tooltip = "Soda"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Drink2" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3" instance=ExtResource( 33 )]
+margin_left = 173.0
+margin_top = 25.0
+margin_right = 263.0
+margin_bottom = 115.0
 texture = ExtResource( 21 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Soda"
 
-[node name="Drink3" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3"]
-margin_left = 293.0
-margin_right = 436.0
-margin_bottom = 141.0
-rect_min_size = Vector2( 100, 100 )
-hint_tooltip = "Energy Drink"
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Drink3" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients3" instance=ExtResource( 33 )]
+margin_left = 320.0
+margin_top = 25.0
+margin_right = 410.0
+margin_bottom = 115.0
 texture = ExtResource( 22 )
-expand = true
-stretch_mode = 6
-script = ExtResource( 4 )
 ingredientName = "Energy Drink"
 
 [node name="VegMeatRatio" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
-visible = false
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 443.0
@@ -332,39 +269,45 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer"]
+margin_top = 20.0
 margin_right = 436.0
-margin_bottom = 141.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 6
 alignment = 1
 
 [node name="Carrot Icon" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer/HBoxContainer2"]
-margin_right = 216.0
-margin_bottom = 141.0
+margin_left = 58.0
+margin_right = 158.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 7
-size_flags_vertical = 5
+size_flags_horizontal = 6
+size_flags_vertical = 6
 texture = ExtResource( 15 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 4 )
+whoAmI = "Carrot"
 
 [node name="Meat Icon" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer/HBoxContainer2"]
-margin_left = 220.0
-margin_right = 436.0
-margin_bottom = 141.0
+margin_left = 278.0
+margin_right = 378.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 7
-size_flags_vertical = 5
+size_flags_horizontal = 6
+size_flags_vertical = 6
 texture = ExtResource( 16 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 4 )
+whoAmI = "Meat"
 
 [node name="HSlider" type="HSlider" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer"]
 margin_top = 145.0
 margin_right = 436.0
 margin_bottom = 286.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 7
 min_value = 0.1
 max_value = 0.9
 step = 0.01
@@ -1322,6 +1265,8 @@ mesh = SubResource( 1 )
 [connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot3" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_TextureButton3_pressed"]
 [connection signal="has_interacted" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio" to="Camera/MainUI" method="_on_Set2_has_interacted"]
 [connection signal="drag_ended" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer/HSlider" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio" method="_on_HSlider_drag_ended"]
+[connection signal="value_changed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer/HSlider" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer/HBoxContainer2/Carrot Icon" method="_on_value_changed"]
+[connection signal="value_changed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer/HSlider" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/VegMeatRatio/VBoxContainer/HBoxContainer2/Meat Icon" method="_on_value_changed"]
 [connection signal="has_interacted" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price" to="Camera/MainUI" method="_on_Set3_has_interacted"]
 [connection signal="drag_ended" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price/VBoxContainer/HSlider" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Price" method="_on_HSlider_drag_ended"]
 [connection signal="addToRequestQueue" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit" to="Camera/MainUI" method="addToRequestQueue"]

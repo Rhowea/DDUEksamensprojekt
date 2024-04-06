@@ -28,7 +28,6 @@ func _on_TextureButton3_pressed():
 	set3.visible = true
 	print("Displaying set 3")
 
-
 func _on_slot_contents_updated():
 	for x in slots.get_children():
 		if x.contents == null:
