@@ -7,6 +7,11 @@ signal contents_updated
 var possibleIngredients = {0: ["Carrot", "Potato", "Tomato"], 1: ["Chickpeas", "Fish", "Beef", "Chicken"], 2: ["Water", "Soda", "Energy Drink"]}
 var contents = null
 
+func _process(_delta):
+	if visible:
+		rect_pivot_offset.x = rect_size.x / 2
+		rect_pivot_offset.y = rect_size.y / 2
+
 func can_drop_data(_position, data):
 	return typeof(data) == TYPE_ARRAY and possibleIngredients[slotNumber].has(data[0])
 

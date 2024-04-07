@@ -6,6 +6,11 @@ onready var animPlayer = $AnimationPlayer
 func _ready():
 	hint_tooltip = ingredientName
 
+func _process(_delta):
+	if visible:
+		rect_pivot_offset.x = rect_size.x / 2
+		rect_pivot_offset.y = rect_size.y / 2
+
 func get_drag_data(_position):
 	var icon = self.texture
 	var data = [ingredientName, icon]

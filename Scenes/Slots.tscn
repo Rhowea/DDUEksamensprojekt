@@ -6,23 +6,23 @@
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:rect_min_size:x")
+tracks/0/path = NodePath(".:rect_scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 120, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:rect_min_size:y")
+tracks/1/path = NodePath(".:rect_scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 120, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0 )
 }
 
@@ -30,23 +30,23 @@ tracks/1/keys = {
 resource_name = "bounce"
 loop = true
 tracks/0/type = "bezier"
-tracks/0/path = NodePath(".:rect_min_size:x")
+tracks/0/path = NodePath(".:rect_scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 120, -0.25, 0, 0.25, 0, 140, -0.25, 0, 0.25, 0, 120, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 tracks/1/type = "bezier"
-tracks/1/path = NodePath(".:rect_min_size:y")
+tracks/1/path = NodePath(".:rect_scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 120, -0.25, 0, 0.25, 0, 140, -0.25, 0, 0.25, 0, 120, -0.25, 0, 0.25, 0 ),
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 
@@ -58,8 +58,8 @@ margin_bottom = 60.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 120, 120 )
-size_flags_horizontal = 7
-size_flags_vertical = 7
+size_flags_horizontal = 3
+size_flags_vertical = 3
 action_mode = 0
 texture_normal = ExtResource( 1 )
 expand = true
