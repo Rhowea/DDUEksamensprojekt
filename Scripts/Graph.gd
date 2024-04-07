@@ -22,24 +22,15 @@ onready var labels := {
 	6: $Bars/ColorRect7/Label7
 }
 
-
 func setBarHeight(income):
-	var highest = 0
 	for n in income:
-		if income[n] > highest:
-			highest = income[n]
-	if highest != 0:
-		for n in income:
-			if income[n] == 0:
-				bars[n].rect_min_size.y = 10
-				labels[n].text = "0"
-			else:
-				bars[n].margin_top = 180 * (income[n]/highest)
-				labels[n].text = String(int(income[n]))
-	else:
-		for n in income:
+		if income[n] == 0:
 			bars[n].rect_min_size.y = 10
+			labels[n].text = "0"
+		else:
+			bars[n].rect_min_size.y = (income[n] / 10) * (rect_size.y / 1000)
 			labels[n].text = String(int(income[n]))
+			print(bars[n].rect_min_size.y)
 	for each in bars:
 		bars[each].rect_pivot_offset.y = bars[each].rect_min_size.y
 
