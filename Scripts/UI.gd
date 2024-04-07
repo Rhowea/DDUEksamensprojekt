@@ -101,7 +101,8 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	if response["response"]["size"] == 0:
 		setServerResponseBody("An array of size 0 was received")
-		_on_Button4_pressed()
+		if set6.visible:
+			_on_Button4_pressed()
 #		emit_signal("response", "An array of size 0 was recieved")
 	if response['response']['size'] > 1:
 #		var totalResponse:String = ""
@@ -110,6 +111,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 			set7.playerScores[n].text = String(response["response"][String(n)]["score"])
 			set7.playerGrades[n].text = String(response["response"][String(n)]["grade"])
 	if response["response"]["size"] == 1:
+		set7.makeOwnScoreVisible()
 		set7.ownRank.text = String(response["response"]["0"]["rank"])
 		set7.ownName.text = String(response["response"]["0"]["player_name"])
 		set7.ownScore.text = String(response["response"]["0"]["score"])
@@ -203,6 +205,7 @@ func _on_Button4_pressed():
 		print(income)
 		set4.setBarHeight(income)
 		showScreen(set4)
+		set4.playAnim()
 
 func calcAttract():
 	var ratioAttract = -4 * pow(set2.slider.value, 4) + 4 * pow(set2.slider.value, 2)

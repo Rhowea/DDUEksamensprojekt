@@ -9,4 +9,8 @@ use_filter = true
 font_data = ExtResource( 1 )
 
 [resource]
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+Label/constants/shadow_offset_x = 12
+Label/constants/shadow_offset_y = 12
 Label/fonts/font = SubResource( 1 )

@@ -15,3 +15,9 @@ func _ready():
 	playerScores.erase($VBoxContainer/Scoreboard/Scores/Header)
 	playerGrades = $VBoxContainer/Scoreboard/Grades.get_children()
 	playerGrades.erase($VBoxContainer/Scoreboard/Grades/Header)
+
+func makeOwnScoreVisible():
+	ownRank.visible = true
+	ownName.visible = true
+	ownScore.visible = true
+	ownGrade.visible = true

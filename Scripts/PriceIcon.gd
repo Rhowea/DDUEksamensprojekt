@@ -13,3 +13,8 @@ func _process(_delta):
 func _on_value_changed(value):
 	rect_scale.x = 1 / pow(2 - value, 2)
 	rect_scale.y = 1 / pow(2 - value, 2)
+
+
+func _on_visibility_changed():
+	rect_scale.x = 1 / pow(1.5, 2)
+	rect_scale.y = 1 / pow(1.5, 2)
