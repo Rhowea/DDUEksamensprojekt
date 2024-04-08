@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PriceIcon.gd" type="Script" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Icons/Energy Drink.png" type="Texture" id=22]
 [ext_resource path="res://Icons/Potato.png" type="Texture" id=23]
 [ext_resource path="res://Icons/Water.png" type="Texture" id=24]
+[ext_resource path="res://Scripts/World.gd" type="Script" id=25]
 [ext_resource path="res://Icons/Health and Eco.png" type="Texture" id=26]
 [ext_resource path="res://Scripts/ScoreSubmit.gd" type="Script" id=27]
 [ext_resource path="res://Scripts/HighscoreBoard.gd" type="Script" id=28]
@@ -260,7 +261,35 @@ font_data = ExtResource( 5 )
 size = 33
 font_data = ExtResource( 5 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "Pass day"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("DirectionalLight:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.246064, 9.16222, 0.3, -11.1705, -180, -0.119711, 5.10428, 0.2, -8.52763 ),
+"times": PoolRealArray( 0, 5 )
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("DirectionalLight:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
 [node name="Spatial" type="Spatial"]
+script = ExtResource( 25 )
 
 [node name="Skitse2" parent="." instance=ExtResource( 8 )]
 
@@ -270,6 +299,7 @@ projection = 1
 current = true
 fov = 80.0
 size = 14.7104
+far = 50.0
 
 [node name="MainUI" type="Control" parent="Camera"]
 anchor_right = 1.0
@@ -302,7 +332,6 @@ custom_constants/separation = 50
 alignment = 2
 
 [node name="Panel" type="PanelContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
-visible = false
 margin_right = 504.0
 margin_bottom = 302.0
 size_flags_horizontal = 3
@@ -643,7 +672,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 60.0
-margin_top = -328.0
+margin_top = -281.0
 margin_right = -32.0
 margin_bottom = -100.0
 grow_horizontal = 0
@@ -658,9 +687,9 @@ anims/Grow = SubResource( 6 )
 anims/RESET = SubResource( 7 )
 
 [node name="ColorRect1" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/Bars"]
-margin_top = 128.0
+margin_top = 81.0
 margin_right = 33.0
-margin_bottom = 228.0
+margin_bottom = 181.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 25, 100 )
@@ -690,9 +719,9 @@ text = "999999999"
 
 [node name="ColorRect2" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/Bars"]
 margin_left = 63.0
-margin_top = 128.0
+margin_top = 81.0
 margin_right = 96.0
-margin_bottom = 228.0
+margin_bottom = 181.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 25, 100 )
@@ -722,9 +751,9 @@ text = "999999999"
 
 [node name="ColorRect3" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/Bars"]
 margin_left = 126.0
-margin_top = 128.0
+margin_top = 81.0
 margin_right = 159.0
-margin_bottom = 228.0
+margin_bottom = 181.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 25, 100 )
@@ -754,9 +783,9 @@ text = "999999999"
 
 [node name="ColorRect4" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/Bars"]
 margin_left = 189.0
-margin_top = 128.0
+margin_top = 81.0
 margin_right = 222.0
-margin_bottom = 228.0
+margin_bottom = 181.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 25, 100 )
@@ -786,9 +815,9 @@ text = "999999999"
 
 [node name="ColorRect5" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/Bars"]
 margin_left = 252.0
-margin_top = 128.0
+margin_top = 81.0
 margin_right = 285.0
-margin_bottom = 228.0
+margin_bottom = 181.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 25, 100 )
@@ -818,9 +847,9 @@ text = "999999999"
 
 [node name="ColorRect6" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/Bars"]
 margin_left = 315.0
-margin_top = 128.0
+margin_top = 81.0
 margin_right = 348.0
-margin_bottom = 228.0
+margin_bottom = 181.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 25, 100 )
@@ -850,9 +879,9 @@ text = "999999999"
 
 [node name="ColorRect7" type="ColorRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Graph/Bars"]
 margin_left = 378.0
-margin_top = 128.0
+margin_top = 81.0
 margin_right = 412.0
-margin_bottom = 228.0
+margin_bottom = 181.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 25, 100 )
@@ -1586,6 +1615,7 @@ valign = 1
 autowrap = true
 
 [node name="Buttons" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
+margin_top = 352.0
 margin_right = 504.0
 margin_bottom = 504.0
 size_flags_horizontal = 5
@@ -1597,16 +1627,16 @@ alignment = 1
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
 margin_right = 134.0
-margin_bottom = 504.0
+margin_bottom = 152.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
 alignment_vertical = 2
 
 [node name="buttonToSet1" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer"]
-margin_top = 370.0
+margin_top = 18.0
 margin_right = 134.0
-margin_bottom = 504.0
+margin_bottom = 152.0
 rect_min_size = Vector2( 100, 100 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -1621,16 +1651,16 @@ expand_icon = true
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
 margin_left = 184.0
 margin_right = 319.0
-margin_bottom = 504.0
+margin_bottom = 152.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
 alignment_vertical = 2
 
 [node name="buttonToSet2" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer2"]
-margin_top = 369.0
+margin_top = 17.0
 margin_right = 135.0
-margin_bottom = 504.0
+margin_bottom = 152.0
 rect_min_size = Vector2( 100, 100 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -1645,16 +1675,16 @@ expand_icon = true
 [node name="AspectRatioContainer3" type="AspectRatioContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
 margin_left = 369.0
 margin_right = 504.0
-margin_bottom = 504.0
+margin_bottom = 152.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
 alignment_vertical = 2
 
 [node name="buttonToSet3" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer3"]
-margin_top = 369.0
+margin_top = 17.0
 margin_right = 135.0
-margin_bottom = 504.0
+margin_bottom = 152.0
 rect_min_size = Vector2( 100, 100 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -1691,6 +1721,15 @@ action_mode = 0
 icon = ExtResource( 29 )
 expand_icon = true
 
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Pass day" = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+
+[connection signal="dayHasPassed" from="Camera/MainUI" to="." method="_on_MainUI_dayHasPassed"]
 [connection signal="has_interacted" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" to="Camera/MainUI" method="_on_Set1_has_interacted"]
 [connection signal="contents_updated" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot1" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_slot_contents_updated"]
 [connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer/Slot1" to="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients" method="_on_TextureButton1_pressed"]

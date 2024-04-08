@@ -35,6 +35,7 @@ var ingredients := {
 	"Energy Drink": [0.8, 0.2]
 }
 var serverResponseBody
+signal dayHasPassed()
 
 var http_request : HTTPRequest = HTTPRequest.new()
 const SERVER_URL = "http://kroog.dk/db_test.php"
@@ -201,6 +202,10 @@ func _on_Button4_pressed():
 			income[n] = customerAmount * buyerRatio * (price * 100)
 		print(income)
 		set4.setBarHeight(income)
+		emit_signal("dayHasPassed")
+		button4.disabled = true
+		yield($"../../AnimationPlayer", "animation_finished")
+		button4.disabled = false
 		showScreen(set4)
 		set4.playAnim()
 

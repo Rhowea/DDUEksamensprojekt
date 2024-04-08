@@ -28,7 +28,7 @@ func setBarHeight(income):
 			bars[n].rect_min_size.y = 10
 			labels[n].text = "0"
 		else:
-			bars[n].rect_min_size.y = (income[n] / 10) * (rect_size.y / 1000)
+			bars[n].rect_min_size.y = (income[n] / 10) * ($Bars.rect_size.y / 500)
 			labels[n].text = String(int(income[n]))
 			print(bars[n].rect_min_size.y)
 	for each in bars:
