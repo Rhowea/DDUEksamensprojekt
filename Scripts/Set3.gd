@@ -10,7 +10,5 @@ func _on_HSlider_drag_ended(_value_changed):
 		hasBeenInteractedWith = true
 		emit_signal("has_interacted")
 
-
-
 func _on_visibility_changed():
-	$"VBoxContainer/HBoxContainer/Big Money"._ready()
+	$"VBoxContainer/HBoxContainer/Big Money"._on_value_changed(slider.value)

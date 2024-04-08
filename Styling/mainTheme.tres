@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=2]
+[gd_resource type="Theme" load_steps=14 format=2]
 
 [ext_resource path="res://Styling/OpenSans-VariableFont_wdth,wght.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Styling/StyleboxFlatMain.tres" type="StyleBox" id=2]
@@ -22,6 +22,21 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 12
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.23, 0.23, 0.23, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [resource]
 /fonts/Font = SubResource( 1 )
 Button/styles/disabled = SubResource( 3 )
@@ -33,3 +48,5 @@ HSlider/icons/grabber = ExtResource( 7 )
 HSlider/icons/grabber_highlight = ExtResource( 8 )
 Label/fonts/font = SubResource( 2 )
 PanelContainer/styles/panel = ExtResource( 2 )
+TooltipLabel/fonts/font = SubResource( 5 )
+TooltipPanel/styles/panel = SubResource( 4 )

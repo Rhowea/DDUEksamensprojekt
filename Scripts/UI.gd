@@ -8,7 +8,7 @@ onready var set4 = $AspectRatioContainer/VBoxContainer/Panel/Graph
 onready var set5 = $AspectRatioContainer/VBoxContainer/Panel/Grades
 onready var set6 = $AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit
 onready var set7 = $AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard
-onready var button4 = $Button4
+onready var button4 = $AspectRatioContainer2/Button4
 onready var restartIcon = "res://Icons/Restart.png"
 
 var rng = RandomNumberGenerator.new()
@@ -136,21 +136,18 @@ func _on_Button1_pressed():
 	if canSetVars == true:
 		if window.visible == false:
 			window.visible = true
-			print(window.visible)
 		showScreen(set1)
 
 func _on_Button2_pressed():
 	if canSetVars == true:
 		if window.visible == false:
 			window.visible = true
-			print(window.visible)
 		showScreen(set2)
 
 func _on_Button3_pressed():
 	if canSetVars == true:
 		if window.visible == false:
 			window.visible = true
-			print(window.visible)
 		showScreen(set3)
 
 func _on_WindowDialog_popup_hide():
