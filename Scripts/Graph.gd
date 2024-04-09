@@ -1,5 +1,7 @@
 extends Control
 
+var incomeLocal = [100, 200, 300, 400, 500, 600, 700]
+
 onready var animPlayer = $Bars/AnimationPlayer
 
 onready var bars := {
@@ -22,17 +24,26 @@ onready var labels := {
 	6: $Bars/ColorRect7/Label7
 }
 
+func _ready():
+	get_tree().root.connect("size_changed", self, "_on_viewport_size_changed")
+
+func _on_viewport_size_changed():
+	setBarHeight(incomeLocal)
+
 func setBarHeight(income):
-	for n in income:
+	incomeLocal = income
+	for n in income.size():
 		if income[n] == 0:
-			bars[n].rect_min_size.y = 10
+			setIndividualBar(bars[n], 10)
 			labels[n].text = "0"
 		else:
-			bars[n].rect_min_size.y = (income[n] / 10) * ($Bars.rect_size.y / 500)
+			setIndividualBar(bars[n], income[n])
 			labels[n].text = String(int(income[n]))
-			print(bars[n].rect_min_size.y)
 	for each in bars:
 		bars[each].rect_pivot_offset.y = bars[each].rect_min_size.y
+
+func setIndividualBar(bar, income):
+	bar.rect_min_size.y = $Bars.rect_size.y * (income / 8000)
 
 func playAnim():
 	animPlayer.play("Grow")
