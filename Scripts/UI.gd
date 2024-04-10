@@ -15,7 +15,7 @@ var rng = RandomNumberGenerator.new()
 var set1Interacted = false
 var set2Interacted = false
 var set3Interacted = false
-var canSetVars = true
+var canSetVars = false
 var meatVegRatio
 var price
 var income := {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
@@ -204,7 +204,7 @@ func _on_Button4_pressed():
 		set4.setBarHeight(income)
 		emit_signal("dayHasPassed")
 		button4.disabled = true
-		yield($"../../AnimationPlayer", "animation_finished")
+		yield($"../../DirectionalLight/AnimationPlayer", "animation_finished")
 		button4.disabled = false
 		showScreen(set4)
 		set4.playAnim()
@@ -220,7 +220,7 @@ func calcCustomerRatioOfBuyers(priceOfMeal, attract):
 	return pow((priceOfMeal - 1), 2) + pow(attract, 2)
 
 func calcAmountOfCustomers():
-	rng.randomize()	
+	rng.randomize()
 	#Attractibility * max potential customers +- random variation
 	var variability
 	if rng.randf() < 1:
@@ -279,3 +279,7 @@ func getScores():
 	var request2 := {"command" : command2, "data" : data2}
 	print("Getting own score")
 	addToRequestQueue(request2)
+
+func hideIntroDialogue():
+	$AspectRatioContainer/IntroDialogue.visible = false
+	canSetVars = true

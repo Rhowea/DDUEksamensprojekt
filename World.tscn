@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PriceIcon.gd" type="Script" id=2]
@@ -261,6 +261,10 @@ font_data = ExtResource( 5 )
 size = 33
 font_data = ExtResource( 5 )
 
+[sub_resource type="DynamicFont" id=10]
+size = 24
+font_data = ExtResource( 5 )
+
 [sub_resource type="Animation" id=8]
 resource_name = "Pass day"
 length = 5.0
@@ -332,6 +336,7 @@ custom_constants/separation = 50
 alignment = 2
 
 [node name="Panel" type="PanelContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
+visible = false
 margin_right = 504.0
 margin_bottom = 302.0
 size_flags_horizontal = 3
@@ -341,8 +346,8 @@ script = ExtResource( 9 )
 
 [node name="Ingredients" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
-margin_right = 450.0
-margin_bottom = 300.0
+margin_right = 504.0
+margin_bottom = 302.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
@@ -360,8 +365,8 @@ theme = ExtResource( 31 )
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
-margin_right = 437.0
-margin_bottom = 286.0
+margin_right = 505.0
+margin_bottom = 149.0
 rect_min_size = Vector2( 0, 140 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -371,31 +376,33 @@ alignment = 1
 [node name="Slot1" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer" instance=ExtResource( 34 )]
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 143.0
-margin_bottom = 286.0
+margin_right = 165.0
+margin_bottom = 149.0
 theme = ExtResource( 31 )
+labelText = "Side"
 
 [node name="Slot2" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer" instance=ExtResource( 34 )]
-margin_left = 147.0
+margin_left = 169.0
 margin_top = 0.0
-margin_right = 290.0
-margin_bottom = 286.0
+margin_right = 335.0
+margin_bottom = 149.0
 theme = ExtResource( 31 )
 slotNumber = 1
+labelText = "Main ingredient"
 
 [node name="Slot3" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/HBoxContainer" instance=ExtResource( 34 )]
-margin_left = 294.0
+margin_left = 339.0
 margin_top = 0.0
-margin_right = 437.0
-margin_bottom = 286.0
+margin_right = 505.0
+margin_bottom = 149.0
 theme = ExtResource( 31 )
 slotNumber = 2
+labelText = "Drink"
 
 [node name="Ingredients1" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer"]
-visible = false
-margin_top = 144.0
-margin_right = 437.0
-margin_bottom = 234.0
+margin_top = 153.0
+margin_right = 505.0
+margin_bottom = 302.0
 size_flags_vertical = 3
 theme = ExtResource( 31 )
 alignment = 1
@@ -403,8 +410,8 @@ alignment = 1
 [node name="Veg1" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1" instance=ExtResource( 33 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 143.0
-margin_bottom = 90.0
+margin_right = 165.0
+margin_bottom = 149.0
 grow_horizontal = 1
 grow_vertical = 1
 theme = ExtResource( 31 )
@@ -413,9 +420,9 @@ texture = ExtResource( 15 )
 [node name="Veg2" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1" instance=ExtResource( 33 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 147.0
-margin_right = 290.0
-margin_bottom = 90.0
+margin_left = 169.0
+margin_right = 335.0
+margin_bottom = 149.0
 grow_horizontal = 1
 grow_vertical = 1
 theme = ExtResource( 31 )
@@ -425,9 +432,9 @@ ingredientName = "Potato"
 [node name="Veg3" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Ingredients/VBoxContainer/Ingredients1" instance=ExtResource( 33 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 294.0
-margin_right = 437.0
-margin_bottom = 90.0
+margin_left = 339.0
+margin_right = 505.0
+margin_bottom = 149.0
 grow_horizontal = 1
 grow_vertical = 1
 theme = ExtResource( 31 )
@@ -636,6 +643,7 @@ value = 0.5
 tick_count = 9
 
 [node name="Graph" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
+visible = false
 margin_right = 504.0
 margin_bottom = 302.0
 size_flags_horizontal = 3
@@ -913,7 +921,7 @@ text = "999999999"
 [node name="Grades" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
 margin_right = 504.0
-margin_bottom = 354.0
+margin_bottom = 302.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
@@ -930,7 +938,7 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
 margin_right = 154.0
-margin_bottom = 354.0
+margin_bottom = 302.0
 rect_min_size = Vector2( 100, 100 )
 size_flags_horizontal = 3
 size_flags_vertical = 7
@@ -942,7 +950,7 @@ stretch_mode = 6
 [node name="Equals" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
 margin_left = 174.0
 margin_right = 329.0
-margin_bottom = 354.0
+margin_bottom = 302.0
 rect_min_size = Vector2( 64, 64 )
 size_flags_horizontal = 3
 size_flags_vertical = 5
@@ -956,7 +964,7 @@ uppercase = true
 [node name="Grade" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/Grades/HBoxContainer"]
 margin_left = 349.0
 margin_right = 504.0
-margin_bottom = 354.0
+margin_bottom = 302.0
 rect_min_size = Vector2( 64, 64 )
 size_flags_horizontal = 3
 size_flags_vertical = 5
@@ -969,8 +977,8 @@ uppercase = true
 
 [node name="ScoreSubmit" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
-margin_right = 450.0
-margin_bottom = 300.0
+margin_right = 504.0
+margin_bottom = 302.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
@@ -989,16 +997,16 @@ theme = ExtResource( 31 )
 alignment = 1
 
 [node name="Lables" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
-margin_right = 356.0
-margin_bottom = 59.0
+margin_right = 424.0
+margin_bottom = 64.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
 alignment = 1
 
 [node name="Score Text" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
-margin_right = 356.0
-margin_bottom = 27.0
+margin_right = 424.0
+margin_bottom = 19.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
@@ -1008,19 +1016,26 @@ align = 1
 valign = 1
 
 [node name="Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
-margin_top = 31.0
-margin_right = 356.0
-margin_bottom = 59.0
+margin_top = 23.0
+margin_right = 424.0
+margin_bottom = 42.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "9999999999"
 align = 1
 valign = 1
 
+[node name="Eco bonus" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
+margin_top = 46.0
+margin_right = 424.0
+margin_bottom = 64.0
+text = "+ eco bonus"
+align = 1
+
 [node name="PlayerName" type="LineEdit" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
-margin_top = 63.0
-margin_right = 356.0
-margin_bottom = 122.0
+margin_top = 68.0
+margin_right = 424.0
+margin_bottom = 133.0
 rect_min_size = Vector2( 96, 32 )
 focus_next = NodePath("../Button")
 size_flags_horizontal = 3
@@ -1031,9 +1046,9 @@ max_length = 10
 placeholder_text = "Username"
 
 [node name="Button" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
-margin_top = 126.0
-margin_right = 356.0
-margin_bottom = 186.0
+margin_top = 137.0
+margin_right = 424.0
+margin_bottom = 202.0
 size_flags_horizontal = 5
 size_flags_vertical = 7
 theme = ExtResource( 31 )
@@ -1042,7 +1057,7 @@ text = "Submit score"
 [node name="HighscoreBoard" type="Control" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel"]
 visible = false
 margin_right = 504.0
-margin_bottom = 354.0
+margin_bottom = 302.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
@@ -1070,9 +1085,9 @@ align = 1
 valign = 1
 
 [node name="Scoreboard" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer"]
-margin_top = 71.0
+margin_top = 50.0
 margin_right = 504.0
-margin_bottom = 309.0
+margin_bottom = 288.0
 size_flags_horizontal = 7
 size_flags_vertical = 2
 size_flags_stretch_ratio = 3.0
@@ -1557,9 +1572,9 @@ align = 1
 valign = 1
 
 [node name="OwnScore" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/HighscoreBoard/VBoxContainer"]
-margin_top = 326.0
+margin_top = 297.0
 margin_right = 504.0
-margin_bottom = 344.0
+margin_bottom = 297.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme = ExtResource( 31 )
@@ -1615,7 +1630,6 @@ valign = 1
 autowrap = true
 
 [node name="Buttons" type="HBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer"]
-margin_top = 352.0
 margin_right = 504.0
 margin_bottom = 504.0
 size_flags_horizontal = 5
@@ -1627,16 +1641,16 @@ alignment = 1
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
 margin_right = 134.0
-margin_bottom = 152.0
+margin_bottom = 504.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
 alignment_vertical = 2
 
 [node name="buttonToSet1" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer"]
-margin_top = 18.0
+margin_top = 370.0
 margin_right = 134.0
-margin_bottom = 152.0
+margin_bottom = 504.0
 rect_min_size = Vector2( 100, 100 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -1651,16 +1665,16 @@ expand_icon = true
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
 margin_left = 184.0
 margin_right = 319.0
-margin_bottom = 152.0
+margin_bottom = 504.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
 alignment_vertical = 2
 
 [node name="buttonToSet2" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer2"]
-margin_top = 17.0
+margin_top = 369.0
 margin_right = 135.0
-margin_bottom = 152.0
+margin_bottom = 504.0
 rect_min_size = Vector2( 100, 100 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -1675,16 +1689,16 @@ expand_icon = true
 [node name="AspectRatioContainer3" type="AspectRatioContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons"]
 margin_left = 369.0
 margin_right = 504.0
-margin_bottom = 152.0
+margin_bottom = 504.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
 alignment_vertical = 2
 
 [node name="buttonToSet3" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer3"]
-margin_top = 17.0
+margin_top = 369.0
 margin_right = 135.0
-margin_bottom = 152.0
+margin_bottom = 504.0
 rect_min_size = Vector2( 100, 100 )
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
@@ -1695,6 +1709,76 @@ action_mode = 0
 icon = ExtResource( 13 )
 icon_align = 1
 expand_icon = true
+
+[node name="IntroDialogue" type="Panel" parent="Camera/MainUI/AspectRatioContainer"]
+margin_left = 110.0
+margin_right = 614.0
+margin_bottom = 504.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 31 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 50.0
+margin_right = -10.0
+margin_bottom = -50.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue/VBoxContainer"]
+margin_top = 11.0
+margin_right = 484.0
+margin_bottom = 82.0
+size_flags_vertical = 6
+theme = ExtResource( 31 )
+custom_fonts/font = SubResource( 10 )
+text = "Congratulations! You're now the proud owner of a restaurant!"
+autowrap = true
+
+[node name="Label2" type="Label" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue/VBoxContainer"]
+margin_top = 98.0
+margin_right = 484.0
+margin_bottom = 206.0
+size_flags_vertical = 6
+theme = ExtResource( 31 )
+custom_fonts/font = SubResource( 10 )
+text = "Will you go the profitable way, or the considerate, climate- and health-friendly way?"
+autowrap = true
+
+[node name="Label3" type="Label" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue/VBoxContainer"]
+margin_top = 222.0
+margin_right = 484.0
+margin_bottom = 293.0
+size_flags_vertical = 6
+theme = ExtResource( 31 )
+custom_fonts/font = SubResource( 10 )
+text = "We look forward to reviewing your performance."
+autowrap = true
+
+[node name="Label4" type="Label" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue/VBoxContainer"]
+margin_top = 333.0
+margin_right = 484.0
+margin_bottom = 404.0
+size_flags_vertical = 10
+theme = ExtResource( 31 )
+custom_fonts/font = SubResource( 10 )
+text = "Scincerely,
+The board of investors."
+autowrap = true
+
+[node name="Button" type="Button" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+theme = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="Camera/MainUI"]
 anchor_left = 0.786
@@ -1725,7 +1809,8 @@ expand_icon = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0 )
 shadow_enabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DirectionalLight"]
+root_node = NodePath("../..")
 "anims/Pass day" = SubResource( 8 )
 anims/RESET = SubResource( 9 )
 
@@ -1752,4 +1837,5 @@ anims/RESET = SubResource( 9 )
 [connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer/buttonToSet1" to="Camera/MainUI" method="_on_Button1_pressed"]
 [connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer2/buttonToSet2" to="Camera/MainUI" method="_on_Button2_pressed"]
 [connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/VBoxContainer/Buttons/AspectRatioContainer3/buttonToSet3" to="Camera/MainUI" method="_on_Button3_pressed"]
+[connection signal="pressed" from="Camera/MainUI/AspectRatioContainer/IntroDialogue/Button" to="Camera/MainUI" method="hideIntroDialogue"]
 [connection signal="pressed" from="Camera/MainUI/AspectRatioContainer2/Button4" to="Camera/MainUI" method="_on_Button4_pressed"]

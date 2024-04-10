@@ -2,10 +2,14 @@ extends TextureButton
 
 onready var animPlayer = $AnimationPlayer
 export var slotNumber:int
+export var labelText:String
 signal contents_updated
 
 var possibleIngredients = {0: ["Carrot", "Potato", "Tomato"], 1: ["Chickpeas", "Fish", "Beef", "Chicken"], 2: ["Water", "Soda", "Energy Drink"]}
 var contents = null
+
+func _ready():
+	$Label.text = labelText
 
 func _process(_delta):
 	if visible:
@@ -20,6 +24,7 @@ func drop_data(_position, data):
 	self.texture_normal = data[1]
 #	print(contents)
 #	print("Something was dropped")
+	$Label.visible = false
 	animPlayer.play("RESET")
 	emit_signal("contents_updated")
 
