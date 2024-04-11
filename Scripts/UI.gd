@@ -20,7 +20,7 @@ var meatVegRatio
 var price
 var income := {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 var score = -1
-var grade = "G"
+var gradeMult
 #Ingredients[Attractablity, Environmental Goodness]
 var ingredients := {
 	"Carrot": [0.4, 0.7],
@@ -210,14 +210,14 @@ func _on_Button4_pressed():
 		set4.playAnim()
 
 func calcAttract():
-	var ratioAttract = -4 * pow(set2.slider.value, 4) + 4 * pow(set2.slider.value, 2)
-	return (ratioAttract + calcIngredientAttract())/4
+	var ratioAttract = -4 * pow(set2.slider.value - 1, 4) + 4 * pow(set2.slider.value - 1, 2)
+	return (ratioAttract * calcIngredientAttract())/3
 
 func calcIngredientAttract():
 	return ingredients[set1.slot1.contents][0] + ingredients[set1.slot2.contents][0] + ingredients[set1.slot3.contents][0]
 
 func calcCustomerRatioOfBuyers(priceOfMeal, attract):
-	return pow((priceOfMeal - 1), 2) + pow(attract, 2)
+	return -(1 - pow(attract, 2)) * pow(priceOfMeal + 1, -2) + 1
 
 func calcAmountOfCustomers():
 	rng.randomize()
@@ -227,7 +227,7 @@ func calcAmountOfCustomers():
 		variability = -25 * rng.randf()
 	else:
 		variability = 25 * rng.randf()
-	return max(calcAttract() * 75 + variability, 0)
+	return max(calcAttract() * (75 + variability), 0)
 
 func calcEcoImpact():
 	#slider * meat + (1 - slider) * veg + drink
@@ -235,25 +235,30 @@ func calcEcoImpact():
 	
 	if totalImpactScore >= 4:
 		set5.grade.text = "S"
+		gradeMult = 3
 	elif totalImpactScore >= 3:
 		set5.grade.text = "A"
+		gradeMult = 2
 	elif totalImpactScore >= 2:
 		set5.grade.text = "B"
+		gradeMult = 1
 	elif totalImpactScore >= 1.5:
 		set5.grade.text = "C"
+		gradeMult = 0.75
 	elif totalImpactScore >= 1:
 		set5.grade.text = "D"
+		gradeMult = 0.5
 	else:
 		set5.grade.text = "F"
+		gradeMult = 0.25
 	print("totalImpactScore = ", totalImpactScore)
-	grade = set5.grade.text
-	set6.grade = grade
+	set6.grade = set5.grade.text
 
 func calcTotalScore():
-	var total = 0
+	var totalIncome = 0
 	for i in income:
-		total = total + income[i]
-	return int(total)
+		totalIncome = totalIncome + income[i]
+	return int(totalIncome * gradeMult)
 
 func showScreen(set:Control):
 	var sets = [set1, set2, set3, set4, set5, set6, set7]
