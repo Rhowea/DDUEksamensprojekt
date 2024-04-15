@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PriceIcon.gd" type="Script" id=2]
@@ -255,6 +255,10 @@ tracks/13/keys = {
 size = 50
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 20
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -998,7 +1002,7 @@ alignment = 1
 
 [node name="Lables" type="VBoxContainer" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
 margin_right = 424.0
-margin_bottom = 64.0
+margin_bottom = 128.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 31 )
@@ -1006,47 +1010,72 @@ alignment = 1
 
 [node name="Score Text" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
 margin_right = 424.0
-margin_bottom = 19.0
+margin_bottom = 18.0
 grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-text = "Total Score:"
+text = "Score:"
 align = 1
 valign = 1
 
 [node name="Score" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
-margin_top = 23.0
+margin_top = 22.0
 margin_right = 424.0
-margin_bottom = 42.0
+margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "9999999999"
 align = 1
 valign = 1
 
-[node name="Eco bonus" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
-margin_top = 46.0
+[node name="MultText" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
+margin_top = 44.0
 margin_right = 424.0
-margin_bottom = 64.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Score Multiplier - Grade"
+align = 1
+valign = 1
+
+[node name="EcoBonus" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
+margin_top = 66.0
+margin_right = 424.0
+margin_bottom = 84.0
 text = "+ eco bonus"
 align = 1
 
-[node name="PlayerName" type="LineEdit" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
-margin_top = 68.0
+[node name="TotalScore" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
+margin_top = 88.0
 margin_right = 424.0
-margin_bottom = 133.0
+margin_bottom = 106.0
+text = "Total Score:"
+align = 1
+
+[node name="PlayerTotalScore" type="Label" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer/Lables"]
+margin_top = 110.0
+margin_right = 424.0
+margin_bottom = 128.0
+text = "9999999999"
+align = 1
+
+[node name="PlayerName" type="LineEdit" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
+margin_top = 132.0
+margin_right = 424.0
+margin_bottom = 170.0
 rect_min_size = Vector2( 96, 32 )
 focus_next = NodePath("../Button")
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 31 )
+custom_fonts/font = SubResource( 11 )
 align = 1
 max_length = 10
 placeholder_text = "Username"
 
 [node name="Button" type="Button" parent="Camera/MainUI/AspectRatioContainer/VBoxContainer/Panel/ScoreSubmit/VBoxContainer"]
-margin_top = 137.0
+margin_top = 174.0
 margin_right = 424.0
 margin_bottom = 202.0
 size_flags_horizontal = 5

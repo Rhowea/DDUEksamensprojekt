@@ -23,16 +23,16 @@ var score = -1
 var gradeMult
 #Ingredients[Attractablity, Environmental Goodness]
 var ingredients := {
-	"Carrot": [0.4, 0.7],
-	"Potato": [1, 0.6],
-	"Tomato": [0.8, 0.7],
+	"Carrot": [0.4, 1],
+	"Potato": [1, 0.9],
+	"Tomato": [0.8, 0.8],
 	"Chickpeas": [0.2, 1],
-	"Fish": [0.7, 0.7],
+	"Fish": [0.7, 0.6],
 	"Beef": [1, 0.1],
-	"Chicken": [0.8, 0.4],
+	"Chicken": [0.8, 0.5],
 	"Water": [0.4, 1],
 	"Soda": [1, 0.4],
-	"Energy Drink": [0.8, 0.2]
+	"Energy Drink": [0.8, 0.3]
 }
 var serverResponseBody
 signal dayHasPassed()
@@ -101,7 +101,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 		return	
 	
 	if response["response"]["size"] == 0:
-		setServerResponseBody("An array of size 0 was received")
+#		setServerResponseBody("An array of size 0 was received")
 		if set6.visible:
 			_on_Button4_pressed()
 #		emit_signal("response", "An array of size 0 was recieved")
@@ -182,7 +182,7 @@ func _on_Button4_pressed():
 		calcEcoImpact()
 		showScreen(set5)
 	elif set5.visible == true:
-		set6.setScoreLabel(String(calcTotalScore()))
+		set6.setScoreLabel(int(calcTotalScore()), gradeMult)
 		showScreen(set6)
 		#Score submission
 		print("Score submission goes here")
@@ -217,13 +217,15 @@ func calcIngredientAttract():
 	return ingredients[set1.slot1.contents][0] + ingredients[set1.slot2.contents][0] + ingredients[set1.slot3.contents][0]
 
 func calcCustomerRatioOfBuyers(priceOfMeal, attract):
-	return -(1 - pow(attract, 2)) * pow(priceOfMeal + 1, -2) + 1
+	print("Attract: ", attract)
+	return min(pow(priceOfMeal + (1 - attract), -4), 1)
+#	return -(1 - pow(attract, 2)) * pow(priceOfMeal + 1, -2) + 1
 
 func calcAmountOfCustomers():
 	rng.randomize()
 	#Attractibility * max potential customers +- random variation
 	var variability
-	if rng.randf() < 1:
+	if rng.randf() < 0.5:
 		variability = -25 * rng.randf()
 	else:
 		variability = 25 * rng.randf()
@@ -231,26 +233,26 @@ func calcAmountOfCustomers():
 
 func calcEcoImpact():
 	#slider * meat + (1 - slider) * veg + drink
-	var totalImpactScore = (1 - set2.slider.value) * ingredients[set1.slot1.contents][1] + set2.slider.value * ingredients[set1.slot2.contents][1] + ingredients[set1.slot3.contents][1] * 2
+	var totalImpactScore = (1 - set2.slider.value) * ingredients[set1.slot1.contents][1] + set2.slider.value * ingredients[set1.slot2.contents][1] + ingredients[set1.slot3.contents][1]
 	
-	if totalImpactScore >= 4:
+	if totalImpactScore >= 2:
 		set5.grade.text = "S"
-		gradeMult = 3
-	elif totalImpactScore >= 3:
+		gradeMult = 5
+	elif totalImpactScore >= 1.75:
 		set5.grade.text = "A"
-		gradeMult = 2
-	elif totalImpactScore >= 2:
+		gradeMult = 3
+	elif totalImpactScore >= 1.5:
 		set5.grade.text = "B"
 		gradeMult = 1
-	elif totalImpactScore >= 1.5:
+	elif totalImpactScore >= 1.25:
 		set5.grade.text = "C"
-		gradeMult = 0.75
+		gradeMult = 0.8
 	elif totalImpactScore >= 1:
 		set5.grade.text = "D"
-		gradeMult = 0.5
+		gradeMult = 0.4
 	else:
 		set5.grade.text = "F"
-		gradeMult = 0.25
+		gradeMult = 0.2
 	print("totalImpactScore = ", totalImpactScore)
 	set6.grade = set5.grade.text
 
@@ -268,9 +270,9 @@ func showScreen(set:Control):
 		else:
 			i.visible = false
 
-func setServerResponseBody(body):
-	serverResponseBody = body
-	print("serverResponseBody: ", serverResponseBody)
+#func setServerResponseBody(body):
+#	serverResponseBody = body
+#	print("serverResponseBody: ", serverResponseBody)
 
 func getScores():
 	var command = "get_scores"
