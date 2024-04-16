@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Scripts/UI.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/PriceIcon.gd" type="Script" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://Icons/Play.png" type="Texture" id=29]
 [ext_resource path="res://Icons/Plantbeef.png" type="Texture" id=30]
 [ext_resource path="res://Styling/mainTheme.tres" type="Theme" id=31]
+[ext_resource path="res://Icons/X.png" type="Texture" id=32]
 [ext_resource path="res://Scenes/Ingredients.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Scenes/Slots.tscn" type="PackedScene" id=34]
 
@@ -1798,13 +1799,20 @@ The board of investors."
 autowrap = true
 
 [node name="Button" type="Button" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+anchor_left = 0.920318
+anchor_top = 0.000396827
+anchor_right = 1.00032
+anchor_bottom = 0.0813968
+margin_left = 0.159973
+margin_top = -0.200001
+margin_right = -0.160034
+margin_bottom = -0.160002
+size_flags_horizontal = 3
+size_flags_vertical = 2
 theme = ExtResource( 31 )
+icon = ExtResource( 32 )
+icon_align = 1
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
