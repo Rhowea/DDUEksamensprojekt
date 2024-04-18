@@ -1758,9 +1758,9 @@ margin_bottom = -50.0
 alignment = 1
 
 [node name="Label" type="Label" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue/VBoxContainer"]
-margin_top = 11.0
+margin_top = 5.0
 margin_right = 484.0
-margin_bottom = 82.0
+margin_bottom = 76.0
 size_flags_vertical = 6
 theme = ExtResource( 31 )
 custom_fonts/font = SubResource( 10 )
@@ -1768,23 +1768,23 @@ text = "Congratulations! You're now the proud owner of a restaurant!"
 autowrap = true
 
 [node name="Label2" type="Label" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue/VBoxContainer"]
-margin_top = 98.0
+margin_top = 86.0
 margin_right = 484.0
-margin_bottom = 206.0
+margin_bottom = 231.0
 size_flags_vertical = 6
 theme = ExtResource( 31 )
 custom_fonts/font = SubResource( 10 )
-text = "Will you go the profitable way, or the considerate, climate- and health-friendly way?"
+text = "Will you go the profitable way or the considerate, climate- and health-friendly way? You decide on the menu and the price."
 autowrap = true
 
 [node name="Label3" type="Label" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue/VBoxContainer"]
-margin_top = 222.0
+margin_top = 240.0
 margin_right = 484.0
-margin_bottom = 293.0
+margin_bottom = 311.0
 size_flags_vertical = 6
 theme = ExtResource( 31 )
 custom_fonts/font = SubResource( 10 )
-text = "We look forward to reviewing your performance."
+text = "We look forward to reviewing your performance. And scoring you ..."
 autowrap = true
 
 [node name="Label4" type="Label" parent="Camera/MainUI/AspectRatioContainer/IntroDialogue/VBoxContainer"]
@@ -1794,7 +1794,7 @@ margin_bottom = 404.0
 size_flags_vertical = 10
 theme = ExtResource( 31 )
 custom_fonts/font = SubResource( 10 )
-text = "Scincerely,
+text = "Sincerely,
 The board of investors."
 autowrap = true
 
