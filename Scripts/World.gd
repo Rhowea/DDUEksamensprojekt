@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var animPlayer = $DirectionalLight/AnimationPlayer
+onready var animPlayer = $Sun/AnimationPlayer
 
 func _on_MainUI_dayHasPassed():
 	animPlayer.play("Pass day")

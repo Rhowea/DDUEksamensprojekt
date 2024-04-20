@@ -34,11 +34,10 @@ var ingredients := {
 	"Soda": [1, 0.4],
 	"Energy Drink": [0.8, 0.3]
 }
-var serverResponseBody
 signal dayHasPassed()
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "http://kroog.dk/db_test.php"
+const SERVER_URL = "https://kroog.dk/db/db_test.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
 const SECRET_KEY = 1234567890
 var nonce = null
@@ -112,11 +111,11 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 			set7.playerScores[n].text = String(response["response"][String(n)]["score"])
 			set7.playerGrades[n].text = String(response["response"][String(n)]["grade"])
 	if response["response"]["size"] == 1:
-		set7.makeOwnScoreVisible()
-		set7.ownRank.text = String(response["response"]["0"]["rank"])
-		set7.ownName.text = String(response["response"]["0"]["player_name"])
-		set7.ownScore.text = String(response["response"]["0"]["score"])
-		set7.ownGrade.text = String(response["response"]["0"]["grade"])
+		set7.get_node("VBoxContainer/OwnScore").visible = true
+		set7.get_node("VBoxContainer/OwnScore/OwnRank").text = String(response["response"]["0"]["rank"])
+		set7.get_node("VBoxContainer/OwnScore/OwnName").text = String(response["response"]["0"]["player_name"])
+		set7.get_node("VBoxContainer/OwnScore/OwnScore").text = String(response["response"]["0"]["score"])
+		set7.get_node("VBoxContainer/OwnScore/OwnGrade").text = String(response["response"]["0"]["grade"])
 		
 
 func request_nonce():
@@ -150,9 +149,6 @@ func _on_Button3_pressed():
 		if window.visible == false:
 			window.visible = true
 		showScreen(set3)
-
-func _on_WindowDialog_popup_hide():
-		print(window.visible)
 
 func _on_Set1_has_interacted():
 	set1Interacted = true
@@ -204,7 +200,7 @@ func _on_Button4_pressed():
 		set4.setBarHeight(income)
 		emit_signal("dayHasPassed")
 		button4.disabled = true
-		yield($"../../DirectionalLight/AnimationPlayer", "animation_finished")
+		yield($"../../Sun/AnimationPlayer", "animation_finished")
 		button4.disabled = false
 		showScreen(set4)
 		set4.playAnim()
@@ -232,29 +228,30 @@ func calcAmountOfCustomers():
 	return max(calcAttract() * (75 + variability), 0)
 
 func calcEcoImpact():
+	var set5Grade = set5.get_node("HBoxContainer/Grade")
 	#slider * meat + (1 - slider) * veg + drink
 	var totalImpactScore = (1 - set2.slider.value) * ingredients[set1.slot1.contents][1] + set2.slider.value * ingredients[set1.slot2.contents][1] + ingredients[set1.slot3.contents][1]
 	
 	if totalImpactScore >= 2:
-		set5.grade.text = "S"
+		set5Grade.text = "S"
 		gradeMult = 5
 	elif totalImpactScore >= 1.75:
-		set5.grade.text = "A"
+		set5Grade.text = "A"
 		gradeMult = 3
 	elif totalImpactScore >= 1.5:
-		set5.grade.text = "B"
+		set5Grade.text = "B"
 		gradeMult = 1
 	elif totalImpactScore >= 1.25:
-		set5.grade.text = "C"
+		set5Grade.text = "C"
 		gradeMult = 0.8
 	elif totalImpactScore >= 1:
-		set5.grade.text = "D"
+		set5Grade.text = "D"
 		gradeMult = 0.4
 	else:
-		set5.grade.text = "F"
+		set5Grade.text = "F"
 		gradeMult = 0.2
 	print("totalImpactScore = ", totalImpactScore)
-	set6.grade = set5.grade.text
+	set6.grade = set5Grade.text
 
 func calcTotalScore():
 	var totalIncome = 0
