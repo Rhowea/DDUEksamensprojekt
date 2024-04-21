@@ -24,7 +24,6 @@ func get_drag_data(_position):
 
 func _mouse_entered():
 	animPlayer.play("bounce")
-	#play animation
 
 func _mouse_exited():
 	animPlayer.play("RESET")

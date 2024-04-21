@@ -190,7 +190,7 @@ func _on_Button4_pressed():
 		get_tree().reload_current_scene()
 	else:
 		#How many buy
-		var buyerRatio = calcCustomerRatioOfBuyers(price, calcAttract())
+		var buyerRatio = min(pow(price + (1 - calcAttract()), -4), 1)
 		for n in income:
 			#Random function
 			var customerAmount = calcAmountOfCustomers()
@@ -210,10 +210,6 @@ func calcAttract():
 
 func calcIngredientAttract():
 	return ingredients[set1.slot1.contents][0] + ingredients[set1.slot2.contents][0] + ingredients[set1.slot3.contents][0]
-
-func calcCustomerRatioOfBuyers(priceOfMeal, attract):
-	return min(pow(priceOfMeal + (1 - attract), -4), 1)
-#	return -(1 - pow(attract, 2)) * pow(priceOfMeal + 1, -2) + 1
 
 func calcAmountOfCustomers():
 	rng.randomize()

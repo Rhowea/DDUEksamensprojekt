@@ -22,8 +22,6 @@ func can_drop_data(_position, data):
 func drop_data(_position, data):
 	contents = data[0]
 	self.texture_normal = data[1]
-#	print(contents)
-#	print("Something was dropped")
 	$Label.visible = false
 	animPlayer.play("RESET")
 	emit_signal("contents_updated")
