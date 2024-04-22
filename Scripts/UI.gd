@@ -26,7 +26,7 @@ var ingredients := {
 	"Carrot": [0.4, 1],
 	"Potato": [1, 0.9],
 	"Tomato": [0.8, 0.8],
-	"Chickpeas": [0.2, 1],
+	"Plant Beef": [0.2, 1],
 	"Fish": [0.7, 0.6],
 	"Beef": [1, 0.1],
 	"Chicken": [0.8, 0.5],

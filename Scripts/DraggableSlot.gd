@@ -5,7 +5,7 @@ export var slotNumber:int
 export var labelText:String
 signal contents_updated
 
-var possibleIngredients = {0: ["Carrot", "Potato", "Tomato"], 1: ["Chickpeas", "Fish", "Beef", "Chicken"], 2: ["Water", "Soda", "Energy Drink"]}
+var possibleIngredients = [["Carrot", "Potato", "Tomato"], ["Plant Beef", "Fish", "Beef", "Chicken"], ["Water", "Soda", "Energy Drink"]]
 var contents = null
 
 func _ready():
