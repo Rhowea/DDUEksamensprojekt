@@ -37,9 +37,9 @@ var ingredients := {
 signal dayHasPassed()
 
 var http_request : HTTPRequest = HTTPRequest.new()
-const SERVER_URL = "https://kroog.dk/db/db_test.php"
+const SERVER_URL = "http://kroog.dk/db/db_test.php"
 const SERVER_HEADERS = ["Content-Type: application/x-www-form-urlencoded", "Cache-Control: max-age=0"]
-const SECRET_KEY = 1234567890
+const SECRET_KEY:String = "1234567890"
 var nonce = null
 var request_queue : Array = []
 var is_requesting : bool = false
