@@ -66,7 +66,7 @@ func _send_request(request: Dictionary):
 	var body = "command=" + request['command'] + "&" + data
 	var cnonce = String(Crypto.new().generate_random_bytes(32)).sha256_text()
 	var client_hash = (nonce + cnonce + body + String(SECRET_KEY)).sha256_text()
-	print("Client hash: " + client_hash)
+#	print("Client hash: " + client_hash)
 	
 	nonce = null
 	
@@ -79,7 +79,7 @@ func _send_request(request: Dictionary):
 	if err != OK:
 		printerr("HTTPRequest error: " + String(err))
 		return	
-	print("Requesting...\n\tCommand: " + request['command'] + "\n\tBody: " + body)
+#	print("Requesting...\n\tCommand: " + request['command'] + "\n\tBody: " + body)
 
 func _http_request_completed(_result, _response_code, _headers, _body):
 	is_requesting = false
@@ -96,7 +96,7 @@ func _http_request_completed(_result, _response_code, _headers, _body):
 	
 	if response['command'] == "get_nonce":
 		nonce = response['response']['nonce']
-		print("Get nonce: " + response['response']['nonce'])
+#		print("Get nonce: " + response['response']['nonce'])
 		return	
 	
 	if response["response"]["size"] == 0:
@@ -127,7 +127,7 @@ func request_nonce():
 	if err != OK:
 		printerr("HTTPRequest error: " + String(err))
 		return
-	print("Requeste nonce")
+#	print("Requeste nonce")
 
 func addToRequestQueue(body):
 	request_queue.push_back(body)
@@ -152,24 +152,20 @@ func _on_Button3_pressed():
 
 func _on_Set1_has_interacted():
 	set1Interacted = true
-	print("Set 1 is ready")
 	checkForReady()
 
 func _on_Set2_has_interacted():
 	meatVegRatio = set2.slider.value
 	set2Interacted = true
-	print("Set 2 is ready")
 	checkForReady()
 
 func _on_Set3_has_interacted():
 	price = set3.slider.value
 	set3Interacted = true
-	print("Set 3 is ready ", price)
 	checkForReady()
 
 func checkForReady():
 	if set1Interacted == true and set2Interacted == true and set3Interacted == true:
-		print("Ready to calculate")
 		button4.visible = true
 
 func _on_Button4_pressed():
@@ -180,8 +176,6 @@ func _on_Button4_pressed():
 	elif set5.visible == true:
 		set6.setScoreLabel(int(calcTotalScore()), gradeMult)
 		showScreen(set6)
-		#Score submission
-		print("Score submission goes here")
 	elif set6.visible == true:
 		getScores()
 		showScreen(set7)
@@ -244,7 +238,6 @@ func calcEcoImpact():
 	else:
 		set5Grade.text = "F"
 		gradeMult = 0.2
-	print("totalImpactScore = ", totalImpactScore)
 	set6.grade = set5Grade.text
 
 func calcTotalScore():
@@ -269,13 +262,13 @@ func getScores():
 	var command = "get_scores"
 	var data = {"score_ofset" : 0, "score_number" : 10}
 	var request := {"command" : command, "data" : data}
-	print("getting scores")
+#	print("getting scores")
 	addToRequestQueue(request)
 	var command2 = "get_player"
 	var data2 = {"player_name" : set6.playerNameLine.get_text()}
-	print("data2: ", data2)
+#	print("data2: ", data2)
 	var request2 := {"command" : command2, "data" : data2}
-	print("Getting own score")
+#	print("Getting own score")
 	addToRequestQueue(request2)
 
 func hideIntroDialogue():
